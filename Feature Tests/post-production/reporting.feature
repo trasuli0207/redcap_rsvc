@@ -5,7 +5,7 @@ Feature: Reporting
 
   Scenario: Project Setup - 1
     Given I login to REDCap with the user "Test_User1"
-    Then I create a project named "Reporting Feature" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/projects/DesignForms_v1115.xml"
+    Then I create a new project named "Reporting Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/projects/DesignForms_v1115.xml", and clicking the "Create Project" button
 
   Scenario: Project Setup - 2
     Given I should see a link labeled "My Projects"

@@ -30,7 +30,7 @@ Feature: Assign User Rights
   # @focus
   # Scenario: Fast setup (disable when testing full script)
   #   Given I login to REDCap with the user "Test_Admin"
-  #   And I create a project named "SecondProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/06_AssignUserRights_v1115.xml"
+  #   And I create a new project named "SecondProject_1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/06_AssignUserRights_v1115.xml", and clicking the "Create Project" button
   #   And I enable surveys
   #   And I disable longitudinal mode
   #   And I click on the button labeled "Additional customizations"
@@ -54,7 +54,7 @@ Feature: Assign User Rights
 
   Scenario: Project Setup - 1
     Given I login to REDCap with the user "Test_Admin"
-    And I create a project named "SecondProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/06_AssignUserRights_v1115.xml"
+    And I create a new project named "SecondProject_1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/06_AssignUserRights_v1115.xml", and clicking the "Create Project" button
     
   Scenario: Project Setup - 2
     When I should see that surveys are enabled

@@ -5,7 +5,7 @@ I want to see that Data Collection and Storage is functioning as expected
 
 Scenario: Project Setup 1 - Create Project 16_DataImport_v1115
     Given I login to REDCap with the user "Test_Admin"
-    And I create a project named "16_DataImport_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
+    And I create a new project named "16_DataImport_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
     When I click on the link labeled "User Rights"
     And I enter "test_user" into the field identified by "[id=new_username]"
     And I click on the button labeled "Add with custom rights"

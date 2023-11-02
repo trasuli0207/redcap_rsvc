@@ -5,7 +5,7 @@ Feature: Export Data
 
   Scenario: Project Setup 1 - Create Project 21_ExportDataExtraction_v1115
     Given I login to REDCap with the user "Test_User1"
-    And I create a project named "21_ExportDataExtraction_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
+    And I create a new project named "21_ExportDataExtraction_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
     
   Scenario: Project setup 2 - Upload Data Dictionary
     Given I click on the link labeled "Dictionary"

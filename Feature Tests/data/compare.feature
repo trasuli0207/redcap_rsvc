@@ -5,8 +5,8 @@ Feature: Data Comparison Tool / DDE Module
   
   Scenario: Project Setup 1 - Create Project 17_DataComparisonTool_DDE_v1115
     Given I login to REDCap with the user "Test_User1"
-    And I create a project named "17_DataComparisonTool_DDE_v1115" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
-   
+    And I create a new project named "17_DataComparisonTool_DDE_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+
   Scenario: Project Setup 2 - Disable Longitudinal data collection and Repeating instruments and change Validation type of textbox
     Given I click on the link labeled "Project Setup"
     And I disable longitudinal mode

@@ -5,7 +5,7 @@ Feature: Logging
 
   Scenario: 0 - Project Setup
     When I login to REDCap with the user "Test_Admin"
-    Then I create a project named "Logging_Feature" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/logging.xml"
+    Then I create a new project named "Logging_Feature" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/logging.xml", and clicking the "Create Project" button
     And I click on the link labeled "User Rights"
     And I click to edit username "test_admin (Test User)"
     And I click on the button labeled "Edit user privileges"

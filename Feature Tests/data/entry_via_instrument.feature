@@ -5,7 +5,7 @@ Feature: Data Entry through the Data Collection Instrument
 
   Scenario: 0 - Create the Project
     Given I login to REDCap with the user "Test_Admin"
-    And I create a project named "Entry Via Instrument" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
+    And I create a new project named "Entry Via Instrument" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
 
   Scenario: 0 - Add user
     Given I click on the link labeled "My Projects"
