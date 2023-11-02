@@ -5,7 +5,7 @@ Feature: Security Settings
 
   Scenario: Project Setup 1 - Create 12_SecuritySettings_v1115 and add admin as user to 
     Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "Security Settings Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/projects/DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "Security Settings Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "projects/DesignForms_v1115.xml", and clicking the "Create Project" button
 
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "Security Settings Feature"
@@ -16,7 +16,7 @@ Feature: Security Settings
     Then I should see a dialog containing the following text: "Adding new user"
 
     Given I save changes within the context of User Rights
-    Then I should see "test_admin (Test User)"
+    Then I should see "test_admin (Admin User)"
 
   Scenario: 1 - System Status
     Given I login to REDCap with the user "Test_Admin"
