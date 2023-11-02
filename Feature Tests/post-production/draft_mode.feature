@@ -4,7 +4,7 @@ Feature: Draft Mode
   I want to see that Draft Mode is functioning as expected
 
 Scenario: 0 - Project Setup - 1
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "20_DraftMode_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     
 Scenario: 0 - Project Setup - 2, 3
@@ -37,7 +37,7 @@ Scenario: 0 - Project Setup - 4
     Then I should see "Your system configuration values have now been changed!"
 
 Scenario: 1 - Log into Project
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
 
@@ -54,7 +54,7 @@ Scenario: 3- Save settings
 
 Scenario: 4 - Verify Project is in Production
     And I logout
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I see "20_DraftMode_v1115"
     And I click on the link labeled "20_DraftMode_v1115"
@@ -101,13 +101,13 @@ Scenario: 7 - Submit changes
 
 Scenario: 8 - Draft Changes
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
     Given I click on the link labeled "Control Center"
     And I click on the link labeled "User Settings"
     And I select "Never (always require an admin to approve changes)" on the dropdown field labeled "Allow production Draft Mode changes to be approved automatically"
     And I click on the button labeled "Save Changes"
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I see "20_DraftMode_v1115"
     And I click on the link labeled "20_DraftMode_v1115"
@@ -131,7 +131,7 @@ Scenario: 8 - Draft Changes
     Then I logout
 
 Scenario: 9 - Reject changes
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     And I click on the link labeled "Designer"
@@ -153,7 +153,7 @@ Scenario: 9 - Reject changes
     Given I logout
 
 Scenario: 10 - Draft Changes
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     And I click on the link labeled "Add / Edit Records"
@@ -227,7 +227,7 @@ Scenario: 11 - Submit Changes
     Given I logout
 
 Scenario: 12 - Remove Drafted Changes 
-    Given I am an "admin" user who logs into REDCap 
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     And I click on the link labeled "Designer"
@@ -238,7 +238,7 @@ Scenario: 12 - Remove Drafted Changes
     Given I logout
 
 Scenario: 13 - Create Record
-    Given I am a "standard" user who logs into REDCap 
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     And I click on the link labeled "Designer"
@@ -282,7 +282,7 @@ Scenario: 16 - Send Confirmation Email
     And I click on the button labeled "Submit" in the dialog box
 
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
@@ -306,7 +306,7 @@ Scenario: 17 - Commit Changes
     Given I logout
 
 Scenario: 18 - Project Revision History
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     And I click on the link labeled "Project Revision History"
@@ -323,7 +323,7 @@ Scenario: 19 - Define My Events
     Given I logout
 
 Scenario: 20 - Draft Changes
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     When I click on the link labeled "Project Setup"
@@ -341,7 +341,7 @@ Scenario: 20 - Draft Changes
 
 
 Scenario: 21 - Review Events and Form Designations
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "20_DraftMode_v1115"
     When I click on the link labeled "Project Setup"

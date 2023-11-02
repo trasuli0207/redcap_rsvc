@@ -4,7 +4,7 @@ Feature: Manage Project
     I want to see that Manage Project is functioning as expected
 
     Scenario: 0 - Initial Setup Requirement - Add from Email Address
-        Given I am an "admin" user who logs into REDCap
+        Given I login to REDCap with the user "Test_Admin"
         And I click on the link labeled "Control Center"
         And I click on the link labeled "General Configuration"
         And I enter "no-reply@test.com" into the input field labeled "Set a Universal FROM Email address"
@@ -86,11 +86,11 @@ Feature: Manage Project
         Then I should see "User has been successfully saved."
 
     Scenario: 9- Login with test_user2
-        Given I am a "standard2" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User2"
         Then I should NOT see "New Project"
 
     Scenario: 10- Login with test_user
-        Given I am a "standard" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User1"
         Then I should see a link labeled "New Project"
 
     Scenario: 11- Cancel Create Project Request
@@ -100,7 +100,7 @@ Feature: Manage Project
         Then I should see "Welcome to REDCap!"
 
     Scenario: 12- Logout as test_user
-        Given I am an "admin" user who logs into REDCap
+        Given I login to REDCap with the user "Test_Admin"
 
     Scenario: 13- Allow Normal Users to Create New Projects
         Given I click on the link labeled "Control Center"
@@ -111,7 +111,7 @@ Feature: Manage Project
         Then I should see "Your system configuration values have now been changed!"
 
     Scenario: 14- Login with test_user
-        Given I am an "standard" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User1"
 
     Scenario: 15- Create Project and add test_admin to Project
         Given I click on the link labeled "New Project"
@@ -198,7 +198,7 @@ Feature: Manage Project
         Then I should see "Move project to production"
 
     Scenario: 23 - Login as admin1115
-        Given I am an "admin" user who logs into REDCap
+        Given I login to REDCap with the user "Test_Admin"
 
     Scenario: 24 - Allow Normal Users to Move to Production
         Given I click on the link labeled "Control Center"
@@ -208,7 +208,7 @@ Feature: Manage Project
         Then I should see "Your system configuration values have now been changed!"
 
     Scenario: 25 - Login with test_user
-        Given I am a "standard" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User1"
 
     Scenario: 26 - Move ProjectCopy_1115 to Production
         Given I click on the link labeled "My Projects"
@@ -227,7 +227,7 @@ Feature: Manage Project
 
     Scenario: 28 - Login as admin1115
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
 
     Scenario: 29 - Admin Other Functionality Tab Options Visibility
         Given I click on the link labeled "My Projects"
@@ -247,7 +247,7 @@ Feature: Manage Project
         Then I click on the button labeled "Close" in the dialog box
 
     Scenario: 31 - Login with test_user
-        Given I am an "standard" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User1"
 
     Scenario: 32 - Disable / Enable Longitudinal Data Collection
         Given I click on the link labeled "My Projects"
@@ -358,7 +358,7 @@ Feature: Manage Project
         Then I should see "Thank you"
 
     Scenario: 45 - Verify Survey Responses are Read Only
-        Given I am an "standard" user who logs into REDCap
+        Given I login to REDCap with the user "Test_User1"
         Then I should see a link labeled "My Projects"
         And I click on the link labeled "My Projects"
         And I click on the link labeled "FirstProject_1115"
@@ -370,7 +370,7 @@ Feature: Manage Project
 
     Scenario: 46 - Login as admin1115
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
 
     Scenario: 47 - Allow Users to Edit Survey Responses
         Given I click on the link labeled "Control Center"
@@ -381,7 +381,7 @@ Feature: Manage Project
 
     Scenario: 48 - Login with test_user
         Given I logout
-        And I am an "standard" user who logs into REDCap
+        And I login to REDCap with the user "Test_User1"
 
     Scenario: 49 - Edit User Rights for test_user
         Given I change survey edit rights for "test_user" user on the form called "Form 1" on project ID 13
@@ -437,7 +437,7 @@ Feature: Manage Project
 
     Scenario: 55 - Login as admin1115
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
 
     Scenario: 56 - Remove Drafted Changes
         Given I click on the link labeled "My Projects"
@@ -459,7 +459,7 @@ Feature: Manage Project
 
     Scenario: 58 - Login with test_user
         Given I logout
-        And I am an "standard" user who logs into REDCap
+        And I login to REDCap with the user "Test_User1"
 
     Scenario: 59 - Add New Field and Submit Changes
         Given I click on the link labeled "My Projects"
@@ -490,7 +490,7 @@ Feature: Manage Project
 
     Scenario: 62 - Login as admin1115
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
 
     Scenario: 63 - Allow Normal Users to Modify the Repeatable Instruments & Events
         Given I click on the link labeled "Control Center"
@@ -502,7 +502,7 @@ Feature: Manage Project
 
     Scenario: 64 - Login with test_user
         Given I logout
-        And I am an "standard" user who logs into REDCap
+        And I login to REDCap with the user "Test_User1"
 
     Scenario: 65 - Verify Changing Repeating Forms
         Given I click on the link labeled "My Projects"
@@ -544,7 +544,7 @@ Feature: Manage Project
 
     Scenario: 69 - Edit Event 3
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
         And I click on the link labeled "My Projects"
         And I click on the link labeled "FirstProject_1115"
         And I click on the link labeled "Project Setup"
@@ -555,7 +555,7 @@ Feature: Manage Project
 
     Scenario: 70 - Attempt to Remane Arm 2
         Given I logout
-        And I am a "standard" user who logs into REDCap
+        And I login to REDCap with the user "Test_User1"
         And I click on the link labeled "My Projects"
         And I click on the link labeled "FirstProject_1115"
         And I click on the link labeled "Project Setup"
@@ -569,7 +569,7 @@ Feature: Manage Project
 
     Scenario: 71 - Rename Arm 2
         Given I logout
-        And I am an "admin" user who logs into REDCap
+        And I login to REDCap with the user "Test_Admin"
         And I click on the link labeled "My Projects"
         And I click on the link labeled "FirstProject_1115"
         And I click on the link labeled "Project Setup"
@@ -584,7 +584,7 @@ Feature: Manage Project
 
     Scenario: 72 - Check Instrument Designation
         Given I logout
-        And I am a "standard" user who logs into REDCap
+        And I login to REDCap with the user "Test_User1"
         And I click on the link labeled "My Projects"
         And I click on the link labeled "FirstProject_1115"
         And I click on the link labeled "Project Setup"

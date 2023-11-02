@@ -4,7 +4,7 @@ Feature: Export Data
   I want to see that Export Data is functioning as expected
 
   Scenario: Project Setup 1 - Create Project 21_ExportDataExtraction_v1115
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I create a project named "21_ExportDataExtraction_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     
   Scenario: Project setup 2 - Upload Data Dictionary
@@ -68,7 +68,7 @@ Feature: Export Data
     And I click on the button labeled "Close survey"
     And I logout
     # This is for Event 2 for Record ID 2
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     Then I should see "New Project"
     Then I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -84,7 +84,7 @@ Feature: Export Data
     And I logout
         
   Scenario: 1 - Login
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     Then I should see "New Project"
 
   Scenario: 2 - Open project
@@ -109,7 +109,7 @@ Feature: Export Data
     Then I click on the button labeled "Save"
     
   Scenario: 4 - Move to production
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     Then I should see "Control Center"
     And  I click on the link labeled "Control Center"
     Then I should see "Browse Projects"
@@ -128,7 +128,7 @@ Feature: Export Data
     Then I should see "Production"
 
   Scenario: 5a - Verify export option - CSV / Microsoft Excel (raw data)
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "21_ExportDataExtraction_v1115"

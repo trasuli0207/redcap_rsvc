@@ -4,7 +4,7 @@ Feature: Data Quality
   I want to see that Data Collection and Storage is functioning as expected
 
   Scenario: Project Setup 1 - Create Project 18_DataQuality_v1115
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "18_DataQuality_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
 
   Scenario: Project Setup 2 - Add fields and delete all existing data
@@ -53,7 +53,7 @@ Feature: Data Quality
     Given I logout  
 
   Scenario: 4 Login as Standard User
-    Given I am a "standard" user who logs into REDCap 
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled " My Projects"
     And I click on the link labeled "18_DataQuality_v1115"
     Then I should see "Data Quality"
@@ -289,7 +289,7 @@ Feature: Data Quality
 
   Scenario: 48b Logout and login as admin (Deviated from manual test script and added below steps to run Rule H)
     And I logout
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled " My Projects"
     And I click on the link labeled "18_DataQuality_v1115"
     Given I click on the link labeled "Designer"
@@ -340,7 +340,7 @@ Feature: Data Quality
 
   Scenario: 54 Logout and Admin and login as standard user (Test_user)
     Given I logout
-    Given I am a "standard" user who logs into REDCap 
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled " My Projects"
     And I click on the link labeled "18_DataQuality_v1115"
 
@@ -430,7 +430,7 @@ Feature: Data Quality
 
   Scenario: 68 Create a DAG and assign User
     Given I logout
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled " My Projects"
     And I click on the link labeled "18_DataQuality_v1115"
     And I click on the link labeled "DAGs"
@@ -453,7 +453,7 @@ Feature: Data Quality
 
   Scenario: 69 Login and confirm DAG assigned to user
     Given I logout
-    Given I am an "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled " My Projects"
     And I click on the link labeled "18_DataQuality_v1115"
     Given I click on the link labeled "Add / Edit Records"
@@ -481,7 +481,7 @@ Feature: Data Quality
 
   Scenario: 72 Login as Admin and confirm Admin sees a higher number of discrepancies
     Given I logout
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled " My Projects"
     Given the AJAX "POST" request at "ProjectGeneral/project_stats*" tagged by "project_stats" is being monitored
     And I click on the link labeled "18_DataQuality_v1115"
@@ -497,7 +497,7 @@ Feature: Data Quality
 
   Scenario: 73 and 74 Test User2 should not have access to Data quality rules
     Given I logout
-    Given I am a "standard2" user who logs into REDCap 
+    Given I login to REDCap with the user "Test_User2"
     And the AJAX "POST" request at "ProjectGeneral/project_stats*" tagged by "project_stats" is being monitored
     And I click on the link labeled " My Projects"
     And the AJAX request tagged by "project_stats" has completed

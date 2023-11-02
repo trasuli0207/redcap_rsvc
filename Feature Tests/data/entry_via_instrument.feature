@@ -4,7 +4,7 @@ Feature: Data Entry through the Data Collection Instrument
   I want to see that Data Entry through the Data Collection Instruments is functioning as expected
 
   Scenario: 0 - Create the Project
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "Entry Via Instrument" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
 
   Scenario: 0 - Add user
@@ -101,7 +101,7 @@ Feature: Data Entry through the Data Collection Instrument
     And I save the field
 
   Scenario: 1 to 4 - Add/Edit Records
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "Entry Via Instrument"
     And I click on the link labeled "Add / Edit Records"

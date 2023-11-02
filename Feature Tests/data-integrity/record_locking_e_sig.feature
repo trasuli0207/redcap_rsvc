@@ -4,7 +4,7 @@ Feature: Record Locking and E-Signatures
   I want to see that Record Locking and E-Signatures is functioning as expected
 
   Scenario: Test Requirements 1 - Create 19_RecordLockingEsigs_v1115 and add admin as a user
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "19_RecordLockingEsigs_v1115" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
 
   Scenario: Test Requirements 2 - Add test_user
@@ -44,7 +44,7 @@ Feature: Record Locking and E-Signatures
     Then I should NOT see "Move back to Development status"
 
   Scenario: 1 - See Record Locking Module
-    Given I am an "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "19_RecordLockingEsigs_v1115"
     Then I should see "Customize & Manage Locking/E-signatures"
@@ -349,7 +349,7 @@ Feature: Record Locking and E-Signatures
     And I logout
   
   Scenario: 39 - Move project to production and Keep ALL Data
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     Then I click on the link labeled "19_RecordLockingEsigs_v1115"
     And I click on the link labeled "Project Setup"
@@ -371,7 +371,7 @@ Feature: Record Locking and E-Signatures
     And I logout
 
   Scenario: 41 - Login as standard user
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     Then I click on the link labeled "19_RecordLockingEsigs_v1115"
     And I click on the link labeled "Customize & Manage Locking/E-signatures"

@@ -29,7 +29,7 @@ Feature: Assign User Rights
 
   # @focus
   # Scenario: Fast setup (disable when testing full script)
-  #   Given I am an "admin" user who logs into REDCap
+  #   Given I login to REDCap with the user "Test_Admin"
   #   And I create a project named "SecondProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/06_AssignUserRights_v1115.xml"
   #   And I enable surveys
   #   And I disable longitudinal mode
@@ -48,12 +48,12 @@ Feature: Assign User Rights
   #   # Script has expected result: "Data Entry rights remain".
   #   # Consider adding an assertion here.
   #   And I save changes within the context of User Rights
-  #   And I am a "standard" user who logs into REDCap
+  #   And I login to REDCap with the user "Test_User1"
   #   And I click on the link labeled "My Projects"
   #   And I click on the link labeled "SecondProject_1115"
 
   Scenario: Project Setup - 1
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "SecondProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/06_AssignUserRights_v1115.xml"
     
   Scenario: Project Setup - 2
@@ -81,7 +81,7 @@ Feature: Assign User Rights
 
     Given I logout
     Then I should see "Please log in"
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
     Then I should see "Logged in as"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
@@ -93,7 +93,7 @@ Feature: Assign User Rights
     Given I logout
 
   Scenario: 2 - Add expiration data for test_user
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
     And I click on the link labeled "User Rights"
@@ -106,14 +106,14 @@ Feature: Assign User Rights
     And I save changes within the context of User Rights
 
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
     When I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
     Then I should see "Your access to this particular REDCap project has expired."
     Given I logout
 
   Scenario: 3 - Assign Project Design and Setup right to test_user
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
     And I click on the link labeled "User Rights"
@@ -139,7 +139,7 @@ Feature: Assign User Rights
 
   Scenario: 5 - Verify links visibility for granted rights
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
     Then I should see a link labeled "Project Setup"
@@ -427,7 +427,7 @@ Feature: Assign User Rights
     Given I click on the button labeled "Close"
 
   Scenario: 32 - As admin, assign test_user to role without User Rights privileges
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "SecondProject_1115"
     And I click on the link labeled "User Rights"

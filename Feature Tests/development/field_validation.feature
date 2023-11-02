@@ -4,7 +4,7 @@ Feature: Field Validation
   I want to see that Field Validation is functioning as expected
 
   Scenario: 0 - Project Setup
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "FirstProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
 
     And I click on the link labeled "Control Center"
@@ -47,7 +47,7 @@ Feature: Field Validation
     And I should see that the designate an email field for communications setting is "disabled"
 
   Scenario: 1 - Login as Admin
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
 
   Scenario: 2 - Go to My Projects Page
     Given I click on the link labeled "My Projects"

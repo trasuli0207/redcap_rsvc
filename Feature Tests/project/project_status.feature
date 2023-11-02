@@ -4,7 +4,7 @@ Feature: Project Status
   I want to see that Project Status is functioning as expected
 
   Scenario: 0 - Project Setup
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "11_ProjectStatus_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     When I click on the link labeled "User Rights"
     And I enter "test_user" into the username input field
@@ -15,7 +15,7 @@ Feature: Project Status
     And I save changes within the context of User Rights
 
   Scenario: 1 -  Login as test user
-    Given I am an "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
 
   Scenario: 2 - Go to My Projects Page
     Given I click on the link labeled "My Projects"
@@ -29,7 +29,7 @@ Feature: Project Status
 
   Scenario: 4 - Login as test admin
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
   Scenario: 5 - Allow Normal Users to Move Project to Production
     When I click on the link labeled "Control Center"
@@ -40,7 +40,7 @@ Feature: Project Status
 
   Scenario: 6  - Login as test user
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
 
   Scenario: 7 - Open 11_ProjectStatus_v1115
     Given I click on the link labeled "My Projects"
@@ -60,7 +60,7 @@ Feature: Project Status
 
   Scenario: 10 - Login as test admin
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
   Scenario: 11 - Move Back to Development
     Given I click on the link labeled "My Projects"
@@ -71,7 +71,7 @@ Feature: Project Status
 
   Scenario: 12 - Login as test user
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
 
   Scenario: 13 -  Move Project to Production
     Given I click on the link labeled "My Projects"
@@ -87,7 +87,7 @@ Feature: Project Status
 
   Scenario: 14 - Login as test admin
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
   Scenario: 15 - Move Back to Development
     Given I click on the link labeled "My Projects"
@@ -98,7 +98,7 @@ Feature: Project Status
 
   Scenario: 16 - Login as test user
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
 
   Scenario: 17 - Mark Project as Completed
     Given I click on the link labeled "My Projects"
@@ -123,7 +123,7 @@ Feature: Project Status
 
   Scenario: 20 - Login as test admin
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
   Scenario: 21 - Restore Project
     Given I click on the link labeled "My Projects"
@@ -136,7 +136,7 @@ Feature: Project Status
 
   Scenario: 22 - Login as test user
     Given I logout
-    And I am a "standard" user who logs into REDCap
+    And I login to REDCap with the user "Test_User1"
 
   Scenario: 23 - Move Project to Production
     Given I click on the link labeled "My Projects"
@@ -170,7 +170,7 @@ Feature: Project Status
 
   Scenario: 28 - Login as test admin
     Given I logout
-    And I am an "admin" user who logs into REDCap
+    And I login to REDCap with the user "Test_Admin"
 
   Scenario: 29 - Move Project to Analysis/Cleanup Status
     Given I click on the link labeled "My Projects"

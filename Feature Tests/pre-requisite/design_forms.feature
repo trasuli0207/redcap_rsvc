@@ -4,7 +4,7 @@ Feature: Design Forms using Data Dictionary & Online Designer
   I want to see that Design Forms using Data Dictionary & Online Designer are functioning as expected
 
   Scenario: 0 - Load Design Forms Feature.xml
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I create a project named "Design Forms Feature" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/projects/FirstProject_1115.xml"
 
     Given I click on the link labeled "My Projects"
@@ -17,7 +17,7 @@ Feature: Design Forms using Data Dictionary & Online Designer
     Then I logout
 
   Scenario: 1 - Navigate, Login to REDCap, Verify User Rights
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "Design Forms Feature"
     And I click on the link labeled "User Rights"

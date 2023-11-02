@@ -8,7 +8,7 @@ Feature: My Projects
 # Hence added 2 records for Scenario 10. So Scenario 11 could work
 
   Scenario: Project Setup 1 - Create Project 13_MyProjects_v1115 and assign userrights to delete a record
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
     And I create a project named "13_MyProjects_v1115" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     Then I click on the link labeled "User Rights"
     And I click to edit username "test_user (Test User)"
@@ -210,7 +210,7 @@ Feature: My Projects
 
   # Manual testing document does not say to login as admin while moving to Production
   Scenario: 16 - Move to Production and mark Project as complete and ensure the project no longer appears on the My Projects Dashboard
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And  I click on the link labeled "Control Center"
     And  I click on the link labeled "Browse Projects"
     And I wait for 0.5 seconds
@@ -223,7 +223,7 @@ Feature: My Projects
     And I click on the button labeled "YES, Move to Production Status" in the dialog box
     Then I should see "Success! The project is now in production."
     Then I logout
-    When I am an "standard" user who logs into REDCap
+    When I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     And I click on the link labeled "13_MyProjects_v1115"
     Then I should see "13_MyProjects_v1115"
@@ -248,7 +248,7 @@ Feature: My Projects
     Then I should NOT see "13_MyProjects_v1115"
 
   Scenario: 19 - Project is restored back to production and ensure it reflects in the My Projects Dashboard
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And  I click on the link labeled "Control Center"
     And  I click on the link labeled "Browse Projects"
     And I wait for 0.5 seconds
@@ -261,7 +261,7 @@ Feature: My Projects
     And the AJAX request tagged by "render" has completed
     Then I should see "The project has now been restored. The page will now reload to reflect the changes"
     And I close the popup
-    When I am an "standard" user who logs into REDCap
+    When I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     Then I should see "13_MyProjects_v1115"
     And I should see the icon "Production" in column 6 next to the link "13_MyProjects_v1115"
@@ -287,13 +287,13 @@ Feature: My Projects
     And I click on the button labeled "YES, Move to Production Status" 
     And the AJAX request tagged by "render" has completed
     Then I should see "The project has now been moved back to PRODUCTION status." in an alert box
-    When I am an "standard" user who logs into REDCap
+    When I login to REDCap with the user "Test_User1"
     And I click on the link labeled "My Projects"
     Then I should see "13_MyProjects_v1115"
     And I should see the icon "Production" in column 6 next to the link "13_MyProjects_v1115"
     
   Scenario: 22 - Filter Projects by title
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And  I click on the link labeled "Control Center"
     And  I click on the link labeled "Browse Projects"
     And I wait for 0.5 seconds

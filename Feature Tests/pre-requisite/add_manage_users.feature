@@ -4,7 +4,7 @@ Feature: Add / Manage Users
   I want to see that Add / Manage Users is functioning as expected
 
 Scenario: 1- Login as admin1115
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
 
 Scenario: 2- Visible Pages
     Given I click on the link labeled "Control Center"
@@ -100,7 +100,7 @@ Scenario: 15- Login with Suspended User Account
     Then I should see "The following REDCap user account has been suspended:"
 
 Scenario: 16- View test_user in Suspended Users List
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Browse Users"
     Then I should see "User Search: Search for user by username, first name, last name, or primary email"
@@ -149,7 +149,7 @@ Scenario: 20- Confirm test_user can log in
     Then I should see "Please log in with your user name and password"
 
 Scenario: 21- Find test_user2 Under Browse Users Page
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "Control Center"
     And I click on the link labeled "Browse Users"
     And I enter "test_user2" into the input field labeled "User Search: Search for user by username, first name, last name, or primary email"
@@ -220,7 +220,7 @@ Scenario: 28- Confirm test_user Does Not Have Access to Control Center or Create
     Then I logout
 
 Scenario: 29- Cancel Change password for user1115_4 through Browse Users
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Browse Users"
     And I click on the link labeled "View User List By Criteria"

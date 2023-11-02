@@ -4,7 +4,7 @@ Feature: Browse Projects
   I want to see that I have the ability to access, search, and filter projects
 
   Scenario: 0 - Project Setup Steps
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
     And I create a project named "FirstProject_1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/projects/FirstProject_1115.xml"
 
     When I click on the link labeled "My Projects"

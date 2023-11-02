@@ -4,7 +4,7 @@ Feature: Logging
   I want to see that Logging is functioning as expected
 
   Scenario: 0 - Project Setup
-    When I am an "admin" user who logs into REDCap
+    When I login to REDCap with the user "Test_Admin"
     Then I create a project named "Logging_Feature" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/logging.xml"
     And I click on the link labeled "User Rights"
     And I click to edit username "test_admin (Test User)"
@@ -50,7 +50,7 @@ Feature: Logging
     Then I should see "The project is now in production."
 
   Scenario: 1 - Login as test_user
-    When I am a "standard" user who logs into REDCap
+    When I login to REDCap with the user "Test_User1"
 
   Scenario: 2 - Go to my projects and open Logging_Feature
     Then I should see "My Projects"
@@ -136,7 +136,7 @@ Feature: Logging
     And I save changes within the context of User Rights
 
   Scenario: 13 - Login as test_user2
-    When I am a "standard2" user who logs into REDCap
+    When I login to REDCap with the user "Test_User2"
 
   Scenario: 14 - Data Exports, Reports, and Stats
     Given I click on the link labeled "My Projects"
@@ -292,7 +292,7 @@ Feature: Logging
     And I export all logging from the project and verify the result against expected logging results for this version of REDCap
 
   Scenario: 31 - Login as admin
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
 
   Scenario: 32 - Delete a record’s logging activity when deleting the records
     When I click on the link labeled "Control Center"
@@ -305,7 +305,7 @@ Feature: Logging
     And I click on the link labeled "Logging"
 
   Scenario: 33 - Login as test_user
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
 
   Scenario: 34 - Delete Record
     Then I should see "My Projects"
@@ -340,7 +340,7 @@ Feature: Logging
     #And I should see '[All data values were removed from this record's logging activity.]' in the logging table
 
   Scenario: 36 - Login as admin
-    Given I am an "admin" user who logs into REDCap
+    Given I login to REDCap with the user "Test_Admin"
 
   Scenario: 37 - Enter Draft Mode and Enable Longitudinal Data Collection
     Then I should see "My Projects"
@@ -382,7 +382,7 @@ Feature: Logging
     Given I enable the Data Collection Instrument named "Text Validation" for the Event named "Event 1"
 
   Scenario: 38 - Login as test_user
-    Given I am a "standard" user who logs into REDCap
+    Given I login to REDCap with the user "Test_User1"
 
   Scenario: 39 - Add new record to an Arm
     Then I should see "My Projects"
