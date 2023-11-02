@@ -322,7 +322,7 @@ Scenario: 39- Log in test_user with Too Many Attempts
     And I should see "exceeded the maximum amount of failed login attempts"
 
     Scenario: 40- Log in test_user with Correct Password after Buffer Period
-    Given I wait for one minute
+    Given I wait for 1 minute
     And I visit the REDCap login page
     And I enter "test_user" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:" 
