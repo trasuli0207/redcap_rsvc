@@ -5,7 +5,7 @@ Feature: Data Quality
 
   Scenario: Project Setup 1 - Create Project 18_DataQuality_v1115
     Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "18_DataQuality_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "18_DataQuality_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
 
   Scenario: Project Setup 2 - Add fields and delete all existing data
   When I click on the link labeled "Project Setup"

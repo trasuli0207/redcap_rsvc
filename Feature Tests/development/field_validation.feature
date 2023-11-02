@@ -5,7 +5,7 @@ Feature: Field Validation
 
   Scenario: 0 - Project Setup
     Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "FirstProject_1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "FirstProject_1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
 
     And I click on the link labeled "Control Center"
     And I click on the link labeled "Field Validation Types"

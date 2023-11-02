@@ -5,7 +5,7 @@ Feature: Draft Mode
 
 Scenario: 0 - Project Setup - 1
     Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "20_DraftMode_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "20_DraftMode_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
     
 Scenario: 0 - Project Setup - 2, 3
     And I should see a link labeled "User Rights"

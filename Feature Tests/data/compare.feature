@@ -5,19 +5,19 @@ Feature: Data Comparison Tool / DDE Module
   
   Scenario: Project Setup 1 - Create Project 17_DataComparisonTool_DDE_v1115
     Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "17_DataComparisonTool_DDE_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "17_DataComparisonTool_DDE_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
 
   Scenario: Project Setup 2 - Disable Longitudinal data collection and Repeating instruments and change Validation type of textbox
     Given I click on the link labeled "Project Setup"
     And I disable longitudinal mode
     And I open the dialog box for the Repeatable Instruments and Events module
-    And I click on the checkbox labeled "Data Types" for repeating instrument setup
-    And I click on the button labeled "Save"
+    And I click on the checkbox labeled "Data Types" in the dialog box
+    And I click on the button labeled "Save" in the dialog box
     Then I should see "Your settings for repeating instruments and/or events have been successfully saved. (The page will now reload.)"
     And I close the popup
     Then I should see that repeatable instruments are disabled
     And I click on the link labeled "Designer"
-    And I click on the table cell containing a link labeled "Data Types"
+    And I click on the link labeled "Data Types"
     And the AJAX "GET" request at "Design/edit_field_prefill.php*" tagged by "edit" is being monitored
     And I click on the Edit image for the field named "Text Box"
     And the AJAX request tagged by "edit" has completed
@@ -85,7 +85,7 @@ Feature: Data Comparison Tool / DDE Module
   #   Given I print the page
 
   Scenario: 3 - Change Required field from 75 to 57 and compare
-    Given I click on the text "75" of Record ID "2"
+    And I click on the table cell containing the text "75" in a table
     Then I should see " Required"
     # Need to add .focus to the step definition
     And I clear the field and enter "57" into the "required" text input field
@@ -104,7 +104,8 @@ Feature: Data Comparison Tool / DDE Module
     And I select "2" from the dropdown identified by "select[id=record1]"
     And I select "3" from the dropdown identified by "select[id=record2]"
     And I click on the button labeled "Compare"
-    And I click on the text "Guns N' Roses" of Record ID "3"
+    And I click on the table cell containing the text "Guns N' Roses" in a table
+
     Then I should see "Name"
     And I clear the field identified by "input[name=ptname_v2_v2]"
     And I click on the button labeled "Save & Exit Form"

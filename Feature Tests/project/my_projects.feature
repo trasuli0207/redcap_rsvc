@@ -9,7 +9,7 @@ Feature: My Projects
 
   Scenario: Project Setup 1 - Create Project 13_MyProjects_v1115 and assign userrights to delete a record
     Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "13_MyProjects_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "13_MyProjects_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
     Then I click on the link labeled "User Rights"
     And I click to edit username "test_user (Test User)"
     And I click on the button labeled "Edit user privileges"

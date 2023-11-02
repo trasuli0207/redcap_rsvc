@@ -5,7 +5,7 @@ Feature: Record Locking and E-Signatures
 
   Scenario: Test Requirements 1 - Create 19_RecordLockingEsigs_v1115 and add admin as a user
     Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "19_RecordLockingEsigs_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    And I create a new project named "19_RecordLockingEsigs_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
 
   Scenario: Test Requirements 2 - Add test_user
     Given I click on the link labeled "User Rights"

@@ -5,7 +5,7 @@ Feature: Design Forms using Data Dictionary & Online Designer
 
   Scenario: 0 - Load Design Forms Feature.xml
     Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "Design Forms Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "cdisc_files/projects/FirstProject_1115.xml", and clicking the "Create Project" button
+    And I create a new project named "Design Forms Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "projects/FirstProject_1115.xml", and clicking the "Create Project" button
 
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "Design Forms Feature"
