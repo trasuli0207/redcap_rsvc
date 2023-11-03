@@ -18,7 +18,7 @@ Feature: Logging
 
     #Add user 1
     And I click on the link labeled "User Rights"
-    Then I enter "test_user" into the username input field
+    Then I enter "test_user1" into the username input field
     And I click on the button labeled "Add with custom rights"
     And I check the User Right named 'Project Setup & Design'
     And I check the User Right named 'User Rights'

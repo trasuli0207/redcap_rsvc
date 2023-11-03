@@ -32,7 +32,7 @@ Feature: Data Quality
     And I click on the button labeled "Save"
     And the AJAX request tagged by "check_field_name" has completed
     And I click on the link labeled "User Rights"
-    And I enter "Test_user" into the field identified by "input[id=new_username]"
+    And I enter "test_user1" into the field identified by "input[id=new_username]"
     And I click on the button labeled "Add with custom rights" 
     And I check the checkbox identified by "input[name= data_quality_design]"
     And I check the checkbox identified by "input[name=data_quality_execute]"

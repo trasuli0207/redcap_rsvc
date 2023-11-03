@@ -73,7 +73,7 @@ Scenario: 12- Find user1115_1 Under Browse Users Page
 Scenario: 13 - Cancel Suspend test_user Account
     Given for this scenario, I will cancel a confirmation window containing the text "Do you wish to suspend this user's REDCap account?"
     When I click on the link labeled "Browse Users"
-    And I enter "test_user" into the input field labeled "User Search: Search for user by username, first name, last name, or primary email"
+    And I enter "test_user1" into the input field labeled "User Search: Search for user by username, first name, last name, or primary email"
     And I click on the button labeled "Search"
     And I should see "User information for"
 
@@ -84,7 +84,7 @@ Scenario: 13 - Cancel Suspend test_user Account
 Scenario: 14 - Suspend test_user Account
     Given for this scenario, I will accept a confirmation window containing the text "Do you wish to suspend this user's REDCap account?"
     When I click on the link labeled "Browse Users"
-    And I enter "test_user" into the input field labeled "User Search: Search for user by username, first name, last name, or primary email"
+    And I enter "test_user1" into the input field labeled "User Search: Search for user by username, first name, last name, or primary email"
     And I click on the button labeled "Search"
     And I should see "User information for"
 
@@ -94,7 +94,7 @@ Scenario: 14 - Suspend test_user Account
 
 Scenario: 15- Login with Suspended User Account
     When I click on the link labeled "Log out"
-    And I enter "test_user" into the input field labeled "Username:"
+    And I enter "test_user1" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:"
     And I click on the button labeled "Log In"
     Then I should see "The following REDCap user account has been suspended:"
@@ -141,7 +141,7 @@ Scenario: 19- Log out as admin1115
 
 Scenario: 20- Confirm test_user can log in 
     When I click on the link labeled "Log out"
-    And I enter "test_user" into the input field labeled "Username:"
+    And I enter "test_user1" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:"
     And I click on the button labeled "Log In"
     Then I should see a link labeled "My Projects"
@@ -211,7 +211,7 @@ Scenario: 26- Login with Deleted User Account
         #aldefouw will handle 
 
 Scenario: 28- Confirm test_user Does Not Have Access to Control Center or Create a Project
-    When I enter "test_user" into the input field labeled "Username:"
+    When I enter "test_user1" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:"
     And I click on the button labeled "Log In"
     Then I should see "Welcome to REDCap!"
@@ -308,14 +308,14 @@ Scenario: 37- Edit Security & Authentication settings
 #This scenario exists so that 39 is one too many attempts at logging in
 Scenario: 38- Log in test_user with Old Password
     Then I should see "Log In"
-    And I enter "test_user" into the input field labeled "Username:"
+    And I enter "test_user1" into the input field labeled "Username:"
     And I enter "test" into the input field labeled "Password:" 
     And I click on the button labeled "Log In"
     Then I should see "ERROR: You entered an invalid user name or password!"
 
 Scenario: 39- Log in test_user with Too Many Attempts
     Given I logout
-    And I enter "test_user" into the input field labeled "Username:"
+    And I enter "test_user1" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:" 
     And I click on the button labeled "Log In"
     Then I should see "ACCESS DENIED!"
@@ -324,7 +324,7 @@ Scenario: 39- Log in test_user with Too Many Attempts
     Scenario: 40- Log in test_user with Correct Password after Buffer Period
     Given I wait for 1 minute
     And I visit the REDCap login page
-    And I enter "test_user" into the input field labeled "Username:"
+    And I enter "test_user1" into the input field labeled "Username:"
     And I enter "Testing123" into the input field labeled "Password:" 
     And I click on the button labeled "Log In"
     Then I should see a link labeled "My Projects"

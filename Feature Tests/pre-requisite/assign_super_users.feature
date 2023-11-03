@@ -23,7 +23,7 @@ Scenario: 3 - Administrator Privileges Page Visible
     And I should see "Access to Control Center dashboards"
 
 Scenario: 4 - Add test_user to Administrator List
-    Given I enter "test_user" into the field with the placeholder text of "Search users to add as admin"
+    Given I enter "test_user1" into the field with the placeholder text of "Search users to add as admin"
     And I enable the Administrator Privilege "Set administrator privileges" for a new administrator
     And I click on the button labeled "Add"
 

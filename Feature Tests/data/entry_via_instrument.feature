@@ -11,7 +11,7 @@ Feature: Data Entry through the Data Collection Instrument
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "Entry Via Instrument"
     And I click on the link labeled "User Rights"
-    And I enter "test_user" into the username input field
+    And I enter "test_user1" into the username input field
     And I click on the button labeled "Add with custom rights"
     And I check the User Right named 'Project Setup & Design'
     And I select the User Right named 'Data Exports' and choose "Full Data Set"

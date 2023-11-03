@@ -9,7 +9,7 @@ Feature: Record Locking and E-Signatures
 
   Scenario: Test Requirements 2 - Add test_user
     Given I click on the link labeled "User Rights"
-    And I enter "test_user" into the field identified by "input[id=new_username]"
+    And I enter "test_user1" into the field identified by "input[id=new_username]"
     And I click on the button labeled "Add with custom rights"
     And I check the User Right named 'Project Setup & Design'
     And I check the User Right named 'Create Records'
@@ -113,7 +113,7 @@ Feature: Record Locking and E-Signatures
     And I check the checkbox identified by "input[id=__LOCKRECORD__]"
     And I check the checkbox identified by "input[id=__ESIGNATURE__]"
     And I select the submit option labeled "Save & Stay" on the Data Collection Instrument
-    And I enter "test_user" into the field identified by "input[id=esign_username]"
+    And I enter "test_user1" into the field identified by "input[id=esign_username]"
     And I enter "Testing123" into the field identified by "input[id=esign_password]"
     Then I click on the button labeled "Save"
     Then I should see "E-signed by test_user"

@@ -10,7 +10,7 @@ Feature: Browse Projects
     When I click on the link labeled "My Projects"
     And I click on the link labeled "FirstProject_1115"
     And I click on the link labeled "User Rights"
-    And I enter "test_user" into the input field labeled "Add with custom rights"
+    And I enter "test_user1" into the input field labeled "Add with custom rights"
     And I click on the button labeled "Add with custom rights"
     Then I should see 'Adding new user "test_user"'
     And I save changes within the context of User Rights
@@ -63,7 +63,7 @@ Feature: Browse Projects
 
   Scenario: 5 - View all projects with user rights assigned to a user with a specific username
     Given I clear the field labeled "Viewing projects accessible by user:"
-    And I enter "test_user" into the input field labeled "Viewing projects accessible by user:"
+    And I enter "test_user1" into the input field labeled "Viewing projects accessible by user:"
     And I click on the button labeled exactly "View"
     Then I should see 1 rows displayed in the projects table
     And I should see "FirstProject_1115"
