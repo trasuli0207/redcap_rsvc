@@ -4,8 +4,8 @@ Feature: Security Settings
   I want to see that Security Settings is functioning as expected
 
   Scenario: Project Setup 1 - Create 12_SecuritySettings_v1115 and add admin as user to 
-    Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "Security Settings Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "projects/DesignForms_v1115.xml", and clicking the "Create Project" button
+    Given I am an "standard" user who logs into REDCap
+    And I create a project named "Security Settings Feature" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/projects/DesignForms_v1115.xml"
 
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "Security Settings Feature"
@@ -16,10 +16,10 @@ Feature: Security Settings
     Then I should see a dialog containing the following text: "Adding new user"
 
     Given I save changes within the context of User Rights
-    Then I should see "test_admin (Admin User)"
+    Then I should see "test_admin (Test User)"
 
   Scenario: 1 - System Status
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "Control Center"
     And I click on the link labeled "General Configuration"
     Then I should see "Server configuration settings"
@@ -36,13 +36,13 @@ Feature: Security Settings
     And I logout
 
   Scenario: 3 - Check System Status as Standard User
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "This is a test of Vanderbilt REDCap"
     Then I should see "System is offline and will be back on-line shortly."
 
   Scenario: 4 - Check System Status as Admin
     #Given I simulate re-launching the browser
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I should see "REDCap and all its projects are currently OFFLINE and are not accessible to normal users."
     Then I should see "You can return the REDCap system back to"
     Then I should see "ONLINE status in the"
@@ -57,12 +57,12 @@ Feature: Security Settings
     And I logout
 
   Scenario: 6 - Check System Status as User
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should NOT see "This is a test of Vanderbilt REDCap"
     Then I should NOT see "System is offline and will be back on-line shortly."
     
   Scenario: 7 - Check System Status as Admin
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I should NOT see "REDCap and all its projects are currently OFFLINE and are not accessible to normal users."
     Then I should NOT see "You can return the REDCap system back to"
     Then I should NOT see "ONLINE status in the"
@@ -80,7 +80,7 @@ Feature: Security Settings
     And I logout
 
   Scenario: 9 - Check Project Status as Standard User
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     Then I should see "Security Settings Feature"
     Then I should see "OFFLINE"
@@ -92,7 +92,7 @@ Feature: Security Settings
 
   Scenario: 10 - Check Project Status as Admin User
     #Given I simulate re-launching the browser
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "My Projects"
 
     And I click on the link labeled "Security Settings Feature"
@@ -114,7 +114,7 @@ Feature: Security Settings
     And I logout
   
   Scenario: 12 - Check Project Status as Admin
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Given I click on the link labeled "My Projects"
     Then I should NOT see "OFFLINE"
     And I click on the link labeled "Security Settings Feature"
@@ -126,7 +126,7 @@ Feature: Security Settings
     And I logout
 
 Scenario: 13 - Check Project Status as Standard User
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     Then I should see "Security Settings Feature"
     Then I should NOT see "OFFLINE"

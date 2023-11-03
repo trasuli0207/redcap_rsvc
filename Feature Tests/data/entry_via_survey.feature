@@ -4,8 +4,8 @@ Feature: Data Entry through the Survey
   I want to see that Data Entry through the Survey is functioning as expected
 
   Scenario: Project Setup 1 - Create the Project
-    Given I login to REDCap with the user "Test_User1"
-    And I create a new project named "15_DirectDataEntry (Survey) v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    Given I am a "standard" user who logs into REDCap
+    And I create a project named "15_DirectDataEntry (Survey) v1115" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
 
   Scenario: Project Setup 2 - Upload Data Dictionary
     # In manual test it is written as download hope this is upload
@@ -50,7 +50,7 @@ Feature: Data Entry through the Survey
     And I should see that the scheduling module is "disabled"
     And I should see that the randomization module is "disabled"
     And I logout
-    Then I login to REDCap with the user "Test_Admin"
+    Then I am an "admin" user who logs into REDCap
     Then I click on the link labeled "Control Center"
     And I click on the link labeled "Modules/Services Configuration"
     And I select "Disabled" from the dropdown identified by "[name=enable_projecttype_singlesurveyforms]"
@@ -63,7 +63,7 @@ Feature: Data Entry through the Survey
 
   Scenario: 1 and 2 - Login
     # Manual script says login as admin not sure why
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "15_DirectDataEntry (Survey) v1115"
     Then I should see "15_DirectDataEntry (Survey) v1115"
@@ -75,7 +75,7 @@ Feature: Data Entry through the Survey
     And I logout
 
   Scenario: 4 - Change Control center settings to enable surveys
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I click on the link labeled "Control Center"
     And I click on the link labeled "Modules/Services Configuration"
     And I select "Enabled" from the dropdown identified by "[name=enable_projecttype_singlesurveyforms]"
@@ -85,7 +85,7 @@ Feature: Data Entry through the Survey
     And I logout
 
    Scenario: 5 and 6 Verify 'enable survey option' is available
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "15_DirectDataEntry (Survey) v1115"
     Then I should see "15_DirectDataEntry (Survey) v1115"
@@ -117,7 +117,7 @@ Feature: Data Entry through the Survey
   Scenario: 9 - In Control Center - Enable users to edit survey responses
     # This was already enabled in Control Center
     # else checkbox (input[id=form-editresp-survey]) will not be visible in the above Scenario
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I click on the link labeled "Control Center"
     And I click on the link labeled "User Settings"
     Then I scroll the page to the field identified by "[name=enable_edit_survey_response]"
@@ -128,7 +128,7 @@ Feature: Data Entry through the Survey
     And I logout
 
   Scenario: 10 - Check user rights for Edit survey responses (should be checked)
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "15_DirectDataEntry (Survey) v1115"
     Then I click on the link labeled "User Rights"
@@ -210,7 +210,7 @@ Feature: Data Entry through the Survey
     And I click on the button labeled "Submit"    
     And I click on the button labeled "Close survey"
     And I logout
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title" 
@@ -241,7 +241,7 @@ Feature: Data Entry through the Survey
     And I click on the button labeled "Submit"    
     And I click on the button labeled "Close survey"
     And I logout
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -292,7 +292,7 @@ Feature: Data Entry through the Survey
     Then I should see "Demographics"
 
   Scenario: 21 - Add 2 more email ids to Participant List and verify count
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -321,7 +321,7 @@ Feature: Data Entry through the Survey
     Then I logout
 
   Scenario: 22 - In Control Center - Disable users to edit survey responses
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I should see "Control Center"
     Then I click on the link labeled "Control Center"
     Then I should see "User Settings"
@@ -334,7 +334,7 @@ Feature: Data Entry through the Survey
     And I logout
 
   Scenario: 23 - User cannot Edit survey response
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -366,7 +366,7 @@ Feature: Data Entry through the Survey
     # Manual test says 'Edit button is not enabled' but I cannot see Edit button
     And I should NOT see a button labeled "Edit response"
     And I logout
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I should see "Control Center"
     Then I click on the link labeled "Control Center"
     Then I should see "User Settings"
@@ -384,7 +384,7 @@ Feature: Data Entry through the Survey
     Then I should see "Trigger REDCap cron job in a web browser"
     And I enable the cron job
     And I logout
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -455,7 +455,7 @@ Feature: Data Entry through the Survey
     And I logout
 
   Scenario: 28 - 'Save & Return later' Survey for Event 1 and get Return Code
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"
@@ -484,7 +484,7 @@ Feature: Data Entry through the Survey
     And I logout
 
   Scenario: 29 - Check the status messages in the surveys
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should see "New Project"
     And I click on the link labeled "My Projects"
     Then I should see "Project Title"

@@ -4,8 +4,8 @@ As a REDCap end user
 I want to see that Data Collection and Storage is functioning as expected
 
 Scenario: Project Setup 1 - Create Project 16_DataImport_v1115
-    Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "16_DataImport_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    Given I am an "admin" user who logs into REDCap
+    And I create a project named "16_DataImport_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     When I click on the link labeled "User Rights"
     And I enter "test_user1" into the field identified by "[id=new_username]"
     And I click on the button labeled "Add with custom rights"
@@ -35,7 +35,7 @@ Scenario: Project Setup - 3
  
     
 Scenario: 1 - Login as Test User and download Templates for both Rows and Columns
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "Data Import Tool"
@@ -175,7 +175,7 @@ Scenario: 10 - Testing Locking
     Then I logout
 
 Scenario: 11 - Testing user privileges
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled " My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "User Rights"
@@ -185,7 +185,7 @@ Scenario: 11 - Testing user privileges
     And I save changes within the context of User Rights
     Then I logout
 
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "Data Import Tool"
@@ -212,7 +212,7 @@ Scenario: 12 - Testing formatting date and Blank Record
     Then I logout
 
 Scenario: 13 - Testing DAGs
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled " My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "DAGs"
@@ -230,7 +230,7 @@ Scenario: 13 - Testing DAGs
     And I click on the button labeled "Assign"
     And the AJAX request tagged by "dataAccessAddUser" has completed
     Then I logout
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Given I click on the link labeled "My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "Data Import Tool"
@@ -239,7 +239,7 @@ Scenario: 13 - Testing DAGs
     Then I logout
 
 Scenario: 14 - Testing DAGs
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled " My Projects"
     And I click on the link labeled "16_DataImport_v1115"
     And I click on the link labeled "Data Import Tool"

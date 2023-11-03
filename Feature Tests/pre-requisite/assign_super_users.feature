@@ -4,7 +4,7 @@ Feature: Assign Super Users / Account Managers
   I want to see that Assign Super Users / Account Managers is functioning as expected
 
 Scenario: 1-2 - Control Center Links Visible
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I should see a link labeled "Control Center"
     And I click on the link labeled "Control Center"
     Then I should see "Control Center Home"
@@ -38,7 +38,7 @@ Scenario: 5 - View test_user in Admin List
     And I should see "test_user"
 
 Scenario: 6 - Verify test_user Administrator Privileges
-    Given I login to REDCap with the user "Test_User1"
+    Given I am an "standard" user who logs into REDCap
     Then I should see a link labeled "Control Center"
     And I click on the link labeled "Control Center"
     Then I should see "Users"
@@ -60,7 +60,7 @@ Scenario: 9 - View test_user2 in Admin List
     Then I should see "test_user2"
 
 Scenario: 10 - Verify test_user2 Account Manager Privileges
-    Given I login to REDCap with the user "Test_User2"
+    Given I am an "standard2" user who logs into REDCap
     Then I should see "Control Center"
     And I click on the link labeled "Control Center"
     Then I should see "Control Center Home"
@@ -72,7 +72,7 @@ Scenario: 10 - Verify test_user2 Account Manager Privileges
     And I should see "System Configuration"
 
 Scenario: 11 - Switch test_user2 to Maximum User Privileges
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Administrator Privileges"
     Then I enable the Administrator Privilege "Manage user accounts" for the administrator "test_user2"
@@ -101,14 +101,14 @@ Scenario: 14 - View and Edit Project Settings Page
     Then I should see "Navigate to project Classic Database"
 
 Scenario: 15 - Switch test_user2 to System Configuration Modifier
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Administrator Privileges"
     Then I enable the Administrator Privilege "Modify system configuration pages" for the administrator "test_user2"
     And I disable the Administrator Privilege "Access to all projects and data with maximum user privileges" for the administrator "test_user2"
 
 Scenario: 16 - Verify test_user2 System Configuration Access
-    Given I login to REDCap with the user "Test_User2"
+    Given I am an "standard2" user who logs into REDCap
     Then I should see "Control Center"
     And I click on the link labeled "Control Center"
     Then I should see "Control Center Home"
@@ -136,7 +136,7 @@ Scenario: 16 - Verify test_user2 System Configuration Access
     And I should see "Secondary tests"
 
 Scenario: 17 - Switch test_user2 to have access to Control Center Dashboards
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Administrator Privileges"
     Then I should see "Set administrator privileges"
@@ -149,7 +149,7 @@ Scenario: 17 - Switch test_user2 to have access to Control Center Dashboards
     And I enable the Administrator Privilege "Access to Control Center dashboards" for the administrator "test_user2"
 
 Scenario: 18 - Verify test_user2 Maximum User Privileges
-    Given I login to REDCap with the user "Test_User2"
+    Given I am an "standard2" user who logs into REDCap
     Then I should see "Control Center"
     And I click on the link labeled "Control Center"
     Then I should see "Control Center Home"
@@ -164,7 +164,7 @@ Scenario: 18 - Verify test_user2 Maximum User Privileges
     And I should see "System Configuration"
 
 Scenario: 19 - Switch test_user and test_user2 to no admin privileges
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "Control Center"
     When I click on the link labeled "Administrator Privileges"
     Then I should see "Set administrator privileges"
@@ -188,7 +188,7 @@ Scenario: 19 - Switch test_user and test_user2 to no admin privileges
 
     Given I logout
 
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     Then I should see a link labeled "Control Center"
     And I click on the link labeled "Control Center"
     And I click on the link labeled "Administrator Privileges"
@@ -205,9 +205,9 @@ Scenario: 20 - Check Audit Log of User Actions
     And I should see "Event"
 
 Scenario: 21 - Confirm test_user does not have Admin Rights
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     Then I should NOT see a link labeled "Control Center"
 
 Scenario: 22 - Confirm test_user2 does not have Admin Rights
-    Given I login to REDCap with the user "Test_User2"
+    Given I am a "standard2" user who logs into REDCap
     Then I should NOT see a link labeled "Control Center"

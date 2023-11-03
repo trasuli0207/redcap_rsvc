@@ -9,8 +9,8 @@ Feature: Data Access Groups (DAGs)
 #   Added standard3 user to cypress.env.json
 
 Scenario: Project Setup - 1
-    Given I login to REDCap with the user "Test_Admin"
-    And I create a new project named "10_DataAccessGroups_v1115" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "core/07_DesignForms_v1115.xml", and clicking the "Create Project" button
+    Given I am an "admin" user who logs into REDCap
+    And I create a project named "10_DataAccessGroups_v1115" with project purpose Practice / Just for fun via CDISC XML import from fixture location "cdisc_files/core/07_DesignForms_v1115.xml"
     When I click on the link labeled "User Rights"
 
     And I assign the "Project Design and Setup" user right to the user named "Test User" with the username of "test_user"
@@ -56,7 +56,7 @@ Scenario: Project Setup - 2
     And I click on the button labeled "Save" in the dialog box
 
 Scenario: 1 - Login as Test User
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
 
 Scenario: 2 - Go to My Projects Page
     Given I click on the link labeled "My Projects"
@@ -178,7 +178,7 @@ Scenario: 12 - Check email in Participant List in Survey Distribution Tools
     Then I logout
 
 Scenario: 13 - Add a record to DAG 2 and check email in Participant List in Survey Distribution Tools
-    Given I login to REDCap with the user "Test_User2"
+    Given I am a "standard2" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Record Status Dashboard"
@@ -212,7 +212,7 @@ Scenario: 14 - test_user3 access of records
     Then I logout
 
 Scenario: 15 - test_user access of records
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Record Status Dashboard"
@@ -225,7 +225,7 @@ Scenario: 15 - test_user access of records
     Then I logout
 
 Scenario: 16 - Add Record3 and check if test_admin can access all records
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Add / Edit Records"
@@ -287,7 +287,7 @@ Scenario: 18 -  Assign Record3 to DAG2
     Then I logout
 
 Scenario: 19 - test_user can see all 3 records
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Record Status Dashboard"
@@ -302,7 +302,7 @@ Scenario: 19 - test_user can see all 3 records
     Then I logout
 
 Scenario: 20 - test_user2 can see 2 records
-    Given I login to REDCap with the user "Test_User2"
+    Given I am a "standard2" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Record Status Dashboard"
@@ -317,7 +317,7 @@ Scenario: 20 - test_user2 can see 2 records
     Then I logout
 
 Scenario: 21 - Try deleteling DAG2
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "DAGs"
@@ -380,7 +380,7 @@ Scenario: 25 -  Add new record and assign to DAG1. Assign test_user2 to DAG1 and
     And I logout
 
 Scenario: 26 - Change DAGs with 'Switch' button
-    Given I login to REDCap with the user "Test_User2"
+    Given I am an "standard2" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "Record Status Dashboard"
@@ -398,7 +398,7 @@ Scenario: 26 - Change DAGs with 'Switch' button
     And I logout
 
 Scenario: 27 - Check test_user2 is in DAG1
-    Given I login to REDCap with the user "Test_Admin"
+    Given I am an "admin" user who logs into REDCap
     And I click on the link labeled "My Projects"
     And I click on the link labeled "10_DataAccessGroups_v1115"
     Then I click on the link labeled "DAGs"

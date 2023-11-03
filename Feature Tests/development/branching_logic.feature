@@ -7,8 +7,8 @@ Feature: Branching Logic
   #ATS - Agreed to use Advanced Branching Logic Syntax throughout instead of using the Drag-N-Drop Logic Builder due to the complexities observed with drag and drop
 
   Scenario: 0 - Project Setup
-  Given I login to REDCap with the user "Test_User1"
-  And I create a new project named "BranchingLogic_v1115" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "projects/DesignForms_v1115.xml", and clicking the "Create Project" button
+  Given I am a "standard" user who logs into REDCap
+  And I create a project named "BranchingLogic_v1115" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/projects/DesignForms_v1115.xml"
   And I click on the link labeled "My Projects"
   And I click on the link labeled "BranchingLogic_v1115"
   Then I should see "Development"
@@ -26,7 +26,7 @@ Feature: Branching Logic
   Then I logout
 
   Scenario: 1
-  Given I login to REDCap with the user "Test_User1"
+  Given I am a "standard" user who logs into REDCap
   And I click on the link labeled "My Projects"
   And I click on the link labeled "BranchingLogic_v1115"
   And I click on the link labeled "Project Setup"

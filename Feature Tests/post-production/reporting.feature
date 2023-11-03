@@ -4,8 +4,8 @@ Feature: Reporting
   I want to see that Reporting is functioning as expected
 
   Scenario: Project Setup - 1
-    Given I login to REDCap with the user "Test_User1"
-    Then I create a new project named "Reporting Feature" by clicking on "New Project" in the menu bar, selecting "Operational Support" from the dropdown, choosing file "projects/DesignForms_v1115.xml", and clicking the "Create Project" button
+    Given I am a "standard" user who logs into REDCap
+    Then I create a project named "Reporting Feature" with project purpose Operational Support via CDISC XML import from fixture location "cdisc_files/projects/DesignForms_v1115.xml"
 
   Scenario: Project Setup - 2
     Given I should see a link labeled "My Projects"
@@ -61,7 +61,7 @@ Feature: Reporting
     And I should see "records were created"
 
   Scenario: 1 - Navigate to the validation website's REDCap login page; Login as test_user
-    Given I login to REDCap with the user "Test_User1"
+    Given I am a "standard" user who logs into REDCap
 
   Scenario: 2 - Verify project complies with all setup steps in Test Requirements
     Given I click on the link labeled "My Projects"
