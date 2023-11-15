@@ -17,18 +17,17 @@ Feature: Design forms Using Data Dictionary and Online Designer
     When I click on the link labeled "My Projects"
     And I click on the link labeled "B.6.7.900.100"
     And I click on the link labeled "Project Setup"
-    And I click on the link labeled "Designer"
-    Then I should see "Data Collection Instruments"
+    #And I click on the link labeled "Designer" #TODO: ATS: This puts us on the wrong page to move to production
+    #Then I should see "Data Collection Instruments"
 
-#    TODO: Not sure why we are moving to production? I am commenting out for ATS because this seems unnecessary.
-#    And I click on the button labeled "Move project to production"
-#    And I click on the radio button labeled "Keep ALL data saved so far" in the dialog box
-#    And I click on the button labeled "YES, Move to Production Status" in the dialog box
-#    Then I should see "Project Status: Production"
-#
-#    When I click on the link labeled "Designer"
-#    And I click on the button labeled "Enter Draft Mode"
-#    Then I should see "The project is now in Draft Mode"
+    And I click on the button labeled "Move project to production"
+    And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
+    And I click on the button labeled "YES, Move to Production Status" in the dialog box
+    Then I should see Project status: "Production"
+
+    When I click on the link labeled "Designer"
+    And I click on the button labeled "Enter Draft Mode"
+    Then I should see "The project is now in Draft Mode"
 
     #FUNCTIONAL_REQUIREMENT
     ##ACTION: calculated field creation
@@ -50,11 +49,10 @@ Feature: Design forms Using Data Dictionary and Online Designer
     And I should see a link labeled "View equation"
 
     ##SETUP_PRODUCTION
-#    TODO: Not sure why we are moving to production? I am commenting out for ATS because this seems unnecessary.
-#    When I click on the button labeled "Submit Changes for Review"
-#    And I click on the button labeled "Submit" in the dialog box
-#    Then I should see "Changes Were Made Automatically"
-#    When I click on the button labeled "Close" in the dialog box
+    When I click on the button labeled "Submit Changes for Review"
+    And I click on the button labeled "Submit" in the dialog box
+    Then I should see "Changes Were Made Automatically"
+    When I click on the button labeled "Close" in the dialog box
 
     ##VERIFY_CODEBOOK
     When I click on the link labeled "Codebook"
@@ -93,8 +91,7 @@ Feature: Design forms Using Data Dictionary and Online Designer
       | [calculated_field]    | Calculated Field | calc             |
 
     ##VERIFY_LOG
-#    TODO: Removing for ATS.  Not sure how it's relevant to verify we are uploading a data dictionary?
-#    When I click on the link labeled "Logging"
-#    Then I should see a table header and rows containing the following values in the logging table:
-#      | Username   | Action        | List of Data ChangesOR Fields Exported |
-#      | test_admin | Manage/Design | Upload data dictionary                 |
+    When I click on the link labeled "Logging"
+    Then I should see a table header and rows containing the following values in the logging table:
+      | Username   | Action        | List of Data ChangesOR Fields Exported |
+      | test_admin | Manage/Design | Upload data dictionary                 |

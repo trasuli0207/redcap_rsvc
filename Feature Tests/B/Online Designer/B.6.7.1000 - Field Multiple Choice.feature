@@ -18,7 +18,7 @@ Feature: Design forms Using Data Dictionary and Online Designer
     When I click on the link labeled "My Projects"
     And I click on the link labeled "B.6.7.1000.100"
     And I click on the link labeled "Project Setup"
-    #And I click on the link labeled "Designer" #TODO: ATS: This puts us on the wrong page so commenting out
+    #And I click on the link labeled "Designer" #TODO: ATS: This puts us on the wrong page to move to production
     #Then I should see "Data Collection Instruments"
 
     And I click on the button labeled "Move project to production"
