@@ -34,7 +34,7 @@ Feature: B.2.6.200 Assign user rights Project Level:  The system shall allow dat
       | test_user3 |
       | test_user4 |
 
-    Given I click on the button labeled "Upload"
+    Given I click on the button labeled "Upload" in the dialog box
     Then I should see a dialog containing the following text: "SUCCESS!"
     And I close the popup
 

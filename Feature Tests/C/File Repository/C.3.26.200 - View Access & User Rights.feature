@@ -45,7 +45,7 @@ And I should see a table header and rows containing the following values in the 
 | test_user3 |
 | test_user4 |
 
-Given I click on the button labeled "Upload"
+Given I click on the button labeled "Upload" in the dialog box
 Then I should see a dialog containing the following text: "SUCCESS!"
 And I close the popup
 

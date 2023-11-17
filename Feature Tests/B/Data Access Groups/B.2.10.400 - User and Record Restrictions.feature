@@ -29,7 +29,7 @@ Feature: B.2.10.400 Data Access Groups-DAGs User Interface: The system shall pro
             | test_user3 |
             | test_user4 |
 
-        Given I click on the button labeled "Upload"
+        Given I click on the button labeled "Upload" in the dialog box
         Then I should see a dialog containing the following text: "SUCCESS!"
 
         When I close the popup

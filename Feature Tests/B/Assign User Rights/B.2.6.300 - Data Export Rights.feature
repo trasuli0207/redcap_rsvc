@@ -33,7 +33,7 @@ Feature: B.2.6.300 The system shall allow instrument level data export rights to
       | test_user3 |
       | test_user4 |
 
-    Given I click on the button labeled "Upload"
+    Given I click on the button labeled "Upload" in the dialog box
     Then I should see a dialog containing the following text: "SUCCESS!"
     And I close the popup
     And I logout
