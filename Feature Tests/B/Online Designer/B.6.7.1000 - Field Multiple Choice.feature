@@ -49,7 +49,7 @@ Feature: Design forms Using Data Dictionary and Online Designer
 
     #VERIFY
     Then I should see a field named "Multiple Choice Dropdown Manual"
-    And I should see the following dropdown options for the Data Collection Instrument field labeled "Multiple Choice Dropdown Manual"
+    And I should see the dropdown field labeled "Multiple Choice Dropdown Manual" with the options below
       |DDChoice5|
       |DDChoice7|
       |DDChoice6|
