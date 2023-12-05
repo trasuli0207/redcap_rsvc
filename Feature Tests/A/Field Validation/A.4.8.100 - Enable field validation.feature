@@ -56,6 +56,15 @@ Feature: Control Center: The system shall support the enabling/disabling of fiel
     When I click on the instrument labeled "Data Types"
     And I click on the first button labeled "Add Field"
 
+    # MANUAL NOTE : You should NOT see the following options in the "Validation?" dropdown (because we disabled them in steps above):
+    # - Date (D-M-Y)  
+    # - Datetime (M-D-Y H:M)  
+    # - Datetime w/seconds (Y-M-D H:M:S)
+    # - Email 
+    # - Integer 
+    # - Number
+    # - Number (1 decimal place - comma as decimal)
+    # - Time (HH:MM)
     When I select "Text Box (Short Text, Number, Date/Time, ...)" on the dropdown field labeled "Field Type:" in the dialog box
     Then I should see the dropdown field labeled "Validation?" with the options below
       | ---- None ----                    |
