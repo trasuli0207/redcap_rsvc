@@ -50,13 +50,11 @@ Then I should see table rows containing the following values in a table in the d
  | Data Viewing Rights                                      ||||
  | No Access | Read Only | View & Edit | Edit survey responses |
 
-
 #FUNCTIONAL REQUIREMENT
  ##ACTION: Enable editing survey responses for survey instrument
- When I click on the checkbox in the row labeled "Survey" in the Edit survey responses column
+ When I check the checkbox in the row labeled "Survey" in the Edit survey responses column
  And I save changes within the context of User Rights
  Then I should see 'User "test_admin" was successfully edited'
-
 
 #SETUP Check edit survey function in a  record
 Given I click on the link labeled "Record Status Dashboard"
