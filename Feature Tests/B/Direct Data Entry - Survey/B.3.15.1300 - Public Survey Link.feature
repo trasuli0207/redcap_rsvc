@@ -29,7 +29,9 @@ When I click on the link labeled "Survey Distribution Tools"
 Then I should see "Public Survey URL:"
 
 When I click on the button labeled "Open public survey"
-And I click on the button labeled "Submit"
+Then I should see "Please complete the survey below."
+
+Given I click on the button labeled "Submit"
 And I click on the button labeled "Close survey"
 Then I should see "You may now close this tab/window"
 
