@@ -20,7 +20,7 @@ Feature: Control Center: The system shall provide the ability to enable/disable 
     When I click on the link labeled "Project Setup"
     And I click on the button labeled "Move project to production"
     And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
-    And I click on the button labeled "YES, Move to Production Status" in the dialog box
+    And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
     Then I should see Project status: "Production"
 
     #ACTION Upload to top tier file repo (all users will see file) - using the Select files to upload button

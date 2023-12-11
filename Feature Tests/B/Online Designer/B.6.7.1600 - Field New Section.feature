@@ -15,7 +15,7 @@ Feature: Field Creation: The system shall support the creation of Begin New Sect
 #When I click on the button labeled "Project Setup"
 #And I click on the button labeled "Move project to production"
 #And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
-#And I click on the button labeled "YES, Move to Production Status" in the dialog box
+#And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
 #Then I should see "Project Status: Production"
 #
 #When I click on the link labeled "Designer"
