@@ -13,22 +13,32 @@ And I create a new project named "B.3.16.600.100" by clicking on "New Project" i
 When I click on the button labeled "Move project to production"
 And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
 And I click on the button labeled "YES, Move to Production Status" in the dialog box
-Then I should see "Project status:  Production" 
+Then I should see Project status: "Production"
 
-When I click on the link labeled "Data Import Tool" 
-And I click on the button labeled "Choose File" 
-And I upload the csv file labeled "B.3.16.600_DataImport.csv" 
-And I click on the button labeled "Upload File" 
-And I click on the button labeled "Import Data" 
+When I click on the link labeled "Data Import Tool"
+
+Given I upload a "csv" format file located at "import_files/B.3.16.600_DataImport.csv", by clicking the button near "Upload your CSV file" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+Then I should see "DATA DISPLAY TABLE"
+
+#  And I want to export a snapshot of this feature here
+Given I should see a table header and rows containing the following values in the import data display table:
+  | record_id | redcap_survey_identifier | data_types_timestamp | ptname    |
+  | 4         | Joe                      | 8/18/23 12:53        | My Name   |
+  | 5         | Jane                     | 8/18/23 12:54        | Your Name |
+  | 6         | John                     | 8/18/23 12:54        | That name |
+
+Given I click on the button labeled "Import Data"
 Then I should see "Import Successful!"
 
-When I click the link labeled " Data Exports, Reports and Stats" 
-And I click the button labeled " View Report" 
-##VERIFY_DE 
-Then I should see a table header and rows including the following values in the report data table:
-|record_id| Survey Identifier    |  Survey Timestamp    |ptname |
-|         4      |                                  |                                       | My Name|
-|         5      |                                  |                                       | Your Name|
-|         6      |                                  |                                       | That Name|
+When I click on the link labeled "Data Exports, Reports, and Stats"
+And I click on the "View Report" button in the row labeled "All data (all records and fields)"
 
-Manual: new records were imported and survey timestamp fields and identifier fields are ignored 
+###VERIFY_DE
+Then I should see "All data (all records and fields)"
+Given I should see a table header and rows containing the following values in the report data table:
+  | record_id | redcap_survey_identifier | data_types_timestamp | ptname    |
+  | 4         |                          |                      | My Name   |
+  | 5         |                          |                      | Your Name |
+  | 6         |                          |                      | That name |
+
+#Manual: new records were imported and survey timestamp fields and identifier fields are ignored
