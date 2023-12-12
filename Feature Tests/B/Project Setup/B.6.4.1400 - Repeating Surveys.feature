@@ -4,54 +4,73 @@ As a REDCap end user
 I want to see that Manage project user access is functioning as expected
 
 Scenario: B.6.4.1400.100 Ability to create repeating surveys
+#ATS prerequisite: Normal users cannot move projects to production by default - let's adjust that before we proceed.
+Given I login to REDCap with the user "Test_Admin"
+When I click on the link labeled "Control Center"
+And I click on the link labeled "User Settings"
+Then I should see "System-level User Settings"
+Given I select "Yes, normal users can move projects to production" on the dropdown field labeled "Allow normal users to move projects to production?"
+When I click on the button labeled "Save Changes"
+And I see "Your system configuration values have now been changed!"
+Then I logout
+
 #SETUP
 Given I login to REDCap with the user "Test_User1"
 And I create a new project named "B.6.4.1400.100" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project_1.xml", and clicking the "Create Project" button
 #VERIFY_SETUP repeat instrument
 When I click on the link labeled "Project Setup"
-Then I should see a button labeled "Modify" on the field labeled "Repeating instruments and events"
+Then I should see a button labeled "Modify" in the "Repeating instruments and events" row in the "Enable optional modules and customizations" section
 
 #SETUP_PRODUCTION
 When I click on the button labeled "Move project to production"
 And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
 And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-Then I see " Project status:  Production"
+Then I see Project status: "Production"
 
 #VERIFY_DESIGNER
 When I click on the link labeled "Designer"
-Then I should see an enabled icon for the instrument labeled "Survey"
+Then I should see the enabled survey icon link for the instrument row labeled "Survey"
 
 #FUNCTIONAL REQUIREMENT
 Given I click on the link labeled "Record Status Dashboard"
-And I click the bubble to select a record for the "Survey" longitudinal instrument for event "Event Three" for record "1"
+And I locate the bubble for the "Survey" instrument on event "Event Three" for record ID "1" and click on the bubble
 ##ACTION open survey
-And I click on the dropdown option labeled "Open survey" on the dropdown button labeled "Survey options"
+When I click on the button labeled "Survey options"
+And I click on the survey option label containing "Open survey" label
 Then I should see a button labeled "Submit"
 
 #VERIFY - only submit button and hit submit, no take again
-When I click on the button labeled "Submit"
-Then I should see "Thank you for taking the survey"
+Given I click on the button labeled "Submit"
+And I click on the button labeled "Close survey"
+Then I should see "You may now close this tab/window"
 And I should NOT see "Take this survey again"
 
 #VERIFY - no repeatable button
-Given I click on the button labeled "Close survey"
-And I click on the button labeled "Leave without saving changes" on the dialog box
-Then I should NOT see the button labeled "+" for the data collection instrument labeled "Survey" for event "Event Three" for record "1"
+Given I return to the REDCap page I opened the survey from
+Then I should see "Survey response is read-only"
+And I click on the link labeled "Record Status Dashboard"
+
+#And I click on the button labeled "Leave without saving changes" on the dialog box
+Then I should see the "Completed Survey Response" icon for the "Survey" longitudinal instrument on event "Event Three" for record "1"
+
+#And I want to export a snapshot of this feature here
 
 #SETUP modify repeat instrument
 Given I click on the link labeled "Project Setup"
-When I click on the button labeled "Modify" on the field labeled "Repeating instruments and events"
-And I click on the button labeled "Close" in the dialog box
+When I click on the button labeled "Modify" in the "Repeating instruments and events" row in the "Enable optional modules and customizations" section
+Then I should see a dialog containing the following text: "WARNING"
+Given I click on the button labeled "Close" in the dialog box
 And I select "Repeat Instruments (repeat independently of each other)" on the dropdown field labeled "Event Three (Arm 1: Arm 1)"
-And I check the checkbox labeled "Survey"
-And I click on the button labeled "Save"
-#VERIFY
-Then I should see "Successfully saved"
-And I click on the button labeled "Close" in the dialog box
+And for the Event Name "Event Three (Arm 1: Arm 1)", I check the checkbox labeled "Survey" in the dialog box
+And I click on the button labeled "Save" on the dialog box for the Repeatable Instruments and Events module
 
-##ACTION - Create repeatable survey
+#VERIFY - OK for manual; will NOT work for ATS because of how we have to monitor the page reload after saving!
+#Then I should see "Successfully saved" in the dialog box
+#And I click on the button labeled "Close" in the dialog box
+
+#ACTION - Create repeatable survey
 Given I click on the link labeled "Designer"
-And I click on the button labeled "Survey settings" for the instrument labeled "Survey"
+And I click on the "Survey settings" button for the instrument row labeled "Survey"
 And I click on the checkbox labeled "(Optional) Repeat the survey"
 And I click on the button labeled "Save Changes"
 #VERIFY
@@ -59,21 +78,36 @@ Then I should see "Your survey settings were successfully saved"
 
 ##ACTION - Create repeatable survey in record
 When I click on the link labeled "Record Status Dashboard"
-And I click on the bubble for the instrument labeled "Survey" for event "Event Three" for record "4"
-And I click on the button labeled "Save & Stay"
-And I click on the dropdown option labeled "Open Survey" on the dropdown button labeled "Survey options"
-And I enter "Name" into the field labeled "Name_survey"
+And I locate the bubble for the "Survey" instrument on event "Event Three" for record ID "4" and click on the bubble
+And I select the submit option labeled "Save & Stay" on the Data Collection Instrument
+Then I should see "Record ID 4 successfully edited"
+
+Given I click on the button labeled "Survey options"
+And I click on the survey option label containing "Open survey" label
+Then I should see "Please complete the survey below."
+
+Given I clear field and enter "Original" into the data entry form field labeled "Name"
 And I click on the button labeled "Take this survey again"
-And I enter "Name" into the field labeled "Name_survey2"
+Then I should see "Please complete the survey below."
+
+Given I clear field and enter "Instance2" into the data entry form field labeled "Name"
 And I click on the button labeled "Submit"
-And I click on the button labeled "Close survey"
-And I click on the button labeled "Leave without saving changes" in the dialog box
+Then I should see "Thank you for taking the survey."
+
+When I click on the button labeled "Close survey"
+Then I should see "You may now close this tab/window"
+
 ##VERIFY 2 instances
-Then I should see "+" for the data collection instrument labeled "Survey" for event "Event Three" for record "4"
+Given I return to the REDCap page I opened the survey from
+Then I should see "Survey response is read-only"
+
+Given I click on the link labeled "Record Status Dashboard"
+Then I should see the "Many statuses (all same)" icon for the "Survey" longitudinal instrument on event "Event Three" for record "4"
 
 ##VERIFY_LOG
-When I click on the button labeled "Logging"
-Then I should see a table header and rows including the following values in the logging table:
-| Username                  |        Action             | List of Data Changes OR Fields Exported |
-| [survey respondent]| Update Response| [instance = 2], name_survey = 'Name_survey2' |
-| [survey respondent]| Update Response| name_survey = 'Name_survey' |
+When I click on the link labeled "Logging"
+Then I should see a table header and rows containing the following values in the logging table:
+  | Time / Date      | Username                  | Action          | List of Data ChangesOR Fields Exported  |
+  | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | [instance = 2]                          |
+  | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Instance2'               |
+  | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Original'                |
