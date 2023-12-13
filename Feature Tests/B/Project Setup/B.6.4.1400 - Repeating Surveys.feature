@@ -49,11 +49,7 @@ I want to see that Manage project user access is functioning as expected
     Given I return to the REDCap page I opened the survey from
     Then I should see "Survey response is read-only"
     And I click on the link labeled "Record Status Dashboard"
-
-    #And I click on the button labeled "Leave without saving changes" on the dialog box
-    Then I should see the "Completed Survey Response" icon for the "Survey" longitudinal instrument on event "Event Three" for record "1"
-
-    #And I want to export a snapshot of this feature here
+    And I should see the "Completed Survey Response" icon for the "Survey" longitudinal instrument on event "Event Three" for record "1"
 
     #SETUP modify repeat instrument
     Given I click on the link labeled "Project Setup"
