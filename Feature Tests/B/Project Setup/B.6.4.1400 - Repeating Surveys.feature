@@ -64,7 +64,7 @@ I want to see that Manage project user access is functioning as expected
     And for the Event Name "Event Three (Arm 1: Arm 1)", I check the checkbox labeled "Survey" in the dialog box
     And I click on the button labeled "Save" on the dialog box for the Repeatable Instruments and Events module
 
-    #VERIFY - OK for manual; will NOT work for ATS because of how we have to monitor the page reload after saving!
+    #VERIFY - OK for manual; since dialog box disappears, commented out for ATS
     #Then I should see "Successfully saved" in the dialog box
     #And I click on the button labeled "Close" in the dialog box
 
@@ -86,11 +86,11 @@ I want to see that Manage project user access is functioning as expected
     And I click on the survey option label containing "Open survey" label
     Then I should see "Please complete the survey below."
 
-    Given I clear field and enter "Original" into the data entry form field labeled "Name"
+    Given I clear field and enter "Name_survey" into the data entry form field labeled "Name"
     And I click on the button labeled "Take this survey again"
     Then I should see "Please complete the survey below."
 
-    Given I clear field and enter "Instance2" into the data entry form field labeled "Name"
+    Given I clear field and enter "Name_survey2" into the data entry form field labeled "Name"
     And I click on the button labeled "Submit"
     Then I should see "Thank you for taking the survey."
 
@@ -109,5 +109,5 @@ I want to see that Manage project user access is functioning as expected
     Then I should see a table header and rows containing the following values in the logging table:
       | Time / Date      | Username                  | Action          | List of Data ChangesOR Fields Exported  |
       | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | [instance = 2]                          |
-      | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Instance2'               |
-      | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Original'                |
+      | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Name_survey2'            |
+      | mm/dd/yyyy hh:mm | [survey respondent]       | Update Response | name_survey = 'Name_survey'             |
