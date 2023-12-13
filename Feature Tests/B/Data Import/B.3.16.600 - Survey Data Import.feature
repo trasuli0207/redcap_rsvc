@@ -19,9 +19,7 @@ When I click on the link labeled "Data Import Tool"
 
 Given I upload a "csv" format file located at "import_files/B.3.16.600_DataImport.csv", by clicking the button near "Upload your CSV file" to browse for the file, and clicking the button labeled "Upload File" to upload the file
 Then I should see "DATA DISPLAY TABLE"
-
-#  And I want to export a snapshot of this feature here
-Given I should see a table header and rows containing the following values in the import data display table:
+And I should see a table header and rows containing the following values in the import data display table:
   | record_id | redcap_survey_identifier | data_types_timestamp | ptname    |
   | 4         | Joe                      | 8/18/23 12:53        | My Name   |
   | 5         | Jane                     | 8/18/23 12:54        | Your Name |
