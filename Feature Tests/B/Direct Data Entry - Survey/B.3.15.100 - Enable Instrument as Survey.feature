@@ -78,7 +78,7 @@ Feature: User Interface: Survey Project Settings: The system shall support enabl
     And I click on the button labeled "Save Changes"
     ##VERIFY
     Then I should see "Your survey settings were successfully saved!"
-    And I should see " Survey settings"
+    And I should see "Survey settings"
 
     ##ACTION Verify no survey function in record
     When I click on the link labeled "Record Status Dashboard"
@@ -86,6 +86,7 @@ Feature: User Interface: Survey Project Settings: The system shall support enabl
 
     #VERIFY
     Then I should NOT see "Survey options"
+    And I should see "Survey response is read-only"
 
     #VERIFY_LOG
     When I click on the link labeled "Logging"
