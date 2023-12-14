@@ -90,7 +90,8 @@ Feature: User Interface: Survey Project Settings: The system shall support enabl
 
     #VERIFY_LOG
     When I click on the link labeled "Logging"
-    Then I should see a table header and rows containing the following values in the logging table:
+    Then I should see "This module lists all changes made to this project"
+    And I should see a table header and rows containing the following values in the logging table:
       | Time / Date      | Username            | Action          | List of Data ChangesOR Fields Exported  |
       | mm/dd/yyyy hh:mm | test_user1          | Manage/Design   | Modify survey info                      |
 
