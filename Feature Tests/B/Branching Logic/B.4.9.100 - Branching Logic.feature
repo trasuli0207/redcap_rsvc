@@ -71,8 +71,6 @@ Feature: User Interface: The system shall support branching logic for data entry
     Then I should see a dialog containing the following text: "Also edit Branching Logic for OTHER fields?"
     And I click on the button labeled "Yes" in the dialog box
     Then I should see "Branching logic: [record_id] <> '999'" on the field labeled "Text2"
-    #
-    #And I want to export a snapshot of this feature here
 
     #FUNCTIONAL_REQUIREMENT: survey mode
     When I click on the link labeled "Survey Distribution Tools"
