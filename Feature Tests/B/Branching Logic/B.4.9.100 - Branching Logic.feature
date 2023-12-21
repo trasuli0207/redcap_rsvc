@@ -123,18 +123,17 @@ Then I should see "Branching logic: [checkbox(3)] = '1'" on the field labeled "R
 #FUNCTIONAL_REQUIREMENT: survey mode
 When I click on the link labeled "Survey Distribution Tools"
 And I click on the button labeled "Open public survey"
-
 And I select the radio option "Choice101" for the field labeled "Radio Button Manual"
 Then I should see the field labeled "Descriptive Text with File"
+
 When I select the radio option "Choice99" for the field labeled "Radio Button Manual"
 Then I should NOT see the field labeled "Descriptive Text with File"
 
-#TODO: Add these still
-#When I select "Checkbox3" on the multiselect field labeled "Checkbox"
-#Then I should see the field labeled "Required"
+When I check the checkbox labeled "Checkbox3"
+Then I should see the field labeled "Required"
 
-#When I deselect the multi-select option labeled "Checkbox3" on the field labeled "Checkbox"
-#Then I should NOT see the field labeled "Required"
+When I uncheck the checkbox labeled "Checkbox3"
+Then I should NOT see the field labeled "Required"
 #M: Close the survey page
 
 ##VERIFY_LOG
