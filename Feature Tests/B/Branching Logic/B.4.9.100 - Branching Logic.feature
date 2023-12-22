@@ -105,15 +105,16 @@ Feature: User Interface: The system shall support branching logic for data entry
     And I click on the Branching Logic icon for the variable "descriptive_text_file"
     And I click on the radio labeled exactly "Drag-N-Drop Logic Builder" in the dialog box
     Then I should see "Displaying field choices for the following data collection instrument" in the dialog box
-    And I drag the field choice labeled "radio_button_manual = Choice101 (101)" to the box labeled "Show the field ONLY if..."
-    And I click on the button labeled "Save" in the Add/Edit Branching Logic dialog box
 
+    Given I drag the field choice labeled "radio_button_manual = Choice101 (101)" to the box labeled "Show the field ONLY if..."
+    And I click on the button labeled "Save" in the Add/Edit Branching Logic dialog box
     Then I should see "Branching logic: [radio_button_manual] = '101'" on the field labeled "Descriptive Text with File"
 
-    When I click on the Branching Logic icon for the variable "required"
+    Given I click on the Branching Logic icon for the variable "required"
     And I click on the radio labeled exactly "Drag-N-Drop Logic Builder" in the dialog box
     Then I should see "Displaying field choices for the following data collection instrument" in the dialog box
-    And I drag the field choice labeled "checkbox = Checkbox3 (3)" to the box labeled "Show the field ONLY if..."
+
+    Given I drag the field choice labeled "checkbox = Checkbox3 (3)" to the box labeled "Show the field ONLY if..."
     And I click on the button labeled "Save" in the Add/Edit Branching Logic dialog box
     Then I should see "Branching logic: [checkbox(3)] = '1'" on the field labeled "Required"
 
