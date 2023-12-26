@@ -49,11 +49,11 @@ Feature: User Interface: Survey Project Settings: The system shall delete all su
       | "Consent" - Event Three (Arm 1: Arm 1)                      |
 
     And I should see a table header and rows containing the following values in a table:
-      | Email              | Record | Participant Identifier| Responded | Invitation Scheduled? | Inventation Sent ? | Link   | Survey Access Code |
-      | [No email listed]  |        | Disabled              | [icon]    | -                     | [icon]             | [icon] | [icon]             |
-      | [No email listed]  |        | Disabled              | [icon]    | -                     | [icon]             | [icon] | [icon]             |
-      | email@test.edu     |   1    | Disabled              | [icon]    | -                     | [icon]             | [icon] | [icon]             |
-      | email@test.edu     |   2    | Disabled              | [icon]    | -                     | [icon]             | [icon] | [icon]             |
+      | Email              | Record | Participant Identifier| Responded | Invitation Scheduled? | Invitation Sent ? | Link   | Survey Access Code |
+      | [No email listed]  |        | Disabled              | [icon]    | -                     | [icon]            | [icon] | [icon]             |
+      | [No email listed]  |        | Disabled              | [icon]    | -                     | [icon]            | [icon] | [icon]             |
+      | email@test.edu     |   1    | Disabled              | [icon]    | -                     | [icon]            | [icon] | [icon]             |
+      | email@test.edu     |   2    | Disabled              | [icon]    | -                     | [icon]            | [icon] | [icon]             |
 
     ##ACTION
     When I click on the link labeled "Record Status Dashboard"
