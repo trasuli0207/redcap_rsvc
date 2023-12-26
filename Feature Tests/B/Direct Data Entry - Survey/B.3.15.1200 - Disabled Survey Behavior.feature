@@ -88,7 +88,8 @@ Feature: User Interface: Survey Project Settings: The system shall delete all su
     And I click on the button labeled "Delete Survey Settings"
     And I click on the button labeled "Delete Survey Settings" in the dialog box
     Then I should see "Survey successfully deleted!"
-    And I click on the button labeled "Close" in the dialog box
+    When I click on the button labeled "Close" in the dialog box
+    Then I should see the "Enable" button for the instrument row labeled "Text Validation"
 
     ##VERIFY_DE: confirm
     When I click on the link labeled "Data Exports, Reports, and Stats"
