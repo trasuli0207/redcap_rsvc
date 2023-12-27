@@ -31,7 +31,7 @@ Feature: User Interface: Survey Project Settings: The system shall support track
     And I click on the tab labeled "Participant List"
     Then I should see "Participant List"
 
-    Given I select '"Survey" - Event 1 (Arm 1: Arm 1)' on the dropdown field labeled "Participant List"
+    Given I see the option labeled '"Survey" - Event 1 (Arm 1: Arm 1)' selected on the field labeled "Participant List"
     Then I should see a "gray bubble" within the "1)  email@test.edu" row of the column labeled "Responded?" of the Participant List table
     And I should see a "gray bubble" within the "2)  email@test.edu" row of the column labeled "Responded?" of the Participant List table
 
@@ -46,7 +46,8 @@ Feature: User Interface: Survey Project Settings: The system shall support track
     Given I return to the REDCap page I opened the survey from
     And I click on the link labeled "Survey Distribution Tools"
     And I click on the tab labeled "Participant List"
-    When I select '"Survey" - Event 1 (Arm 1: Arm 1)' on the dropdown field labeled "Participant List"
+    Then I should see "Participant List"
 
+    Given I see the option labeled '"Survey" - Event 1 (Arm 1: Arm 1)' selected on the field labeled "Participant List"
     Then I should see a "green checkmark" within the "1)  email@test.edu" row of the column labeled "Responded?" of the Participant List table
-    Then I should see a "gray bubble" within the "2)  email@test.edu" row of the column labeled "Responded?" of the Participant List table
+    And I should see a "gray bubble" within the "2)  email@test.edu" row of the column labeled "Responded?" of the Participant List table
