@@ -1,7 +1,7 @@
 Feature: Saving Data: The system shall support the ability to: (Save and stay | Save and exit | Cancel the data entered and leave the record without saving)
 
-As a REDCap end user
-I want to see that saving data is functioning as expected
+  As a REDCap end user
+  I want to see that saving data is functioning as expected
 
   Scenario: B.3.14.600.100 Save data options from data entry page
     #ATS prerequisite: Normal users cannot move projects to production by default - let's adjust that before we proceed.
