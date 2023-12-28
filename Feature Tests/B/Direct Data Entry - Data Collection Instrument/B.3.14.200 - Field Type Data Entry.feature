@@ -64,11 +64,11 @@ Feature: Creating a Record and Entering Data: The system shall support data entr
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | notesbox2 = 'Notes box'                |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | checkbox(1) = checked                  |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | checkbox(2) = checked                  |
-      | mm/dd/yyyy hh:mm | test_user1 | Create record7   | slider = '65'                          |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | signature = '1'                        |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | file_upload = '2'                      |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | tf = '1'                               |
       | mm/dd/yyyy hh:mm | test_user1 | Create record7   | yn = '0'                               |
+      | mm/dd/yyyy hh:mm | test_user1 | Create record7   | slider = '65'                          |
 
     ###VERIFY_DE
     When I click on the link labeled "Data Exports, Reports, and Stats"
