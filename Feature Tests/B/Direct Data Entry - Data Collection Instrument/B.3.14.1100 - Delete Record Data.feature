@@ -33,7 +33,7 @@ And I select "1_FullRights" on the dropdown field labeled "Select Role" on the r
 When I click on the button labeled exactly "Assign" on the role selector dropdown
 Then I should see "Test User1" within the "1_FullRights" row of the column labeled "Username" of the User Rights table
 
-##VERIFY -
+##VERIFY - COUNT OF ROWS
 When I click on the link labeled "Data Exports, Reports, and Stats"
 Then I should see a table row containing the following values in the reports table:
   | A | All data (all records and fields) |
@@ -70,7 +70,7 @@ Then I should see a table header and rows containing the following values in the
   | mm/dd/yyyy hh:mm | test_user1 | Update record1   | name_consent = ''                       |
   | mm/dd/yyyy hh:mm | test_user1 | Update record1   | text_validation_complete = ''           |
 
-##VERIFY_DE
+##VERIFY - COUNT OF ROWS
 When I click on the link labeled "Data Exports, Reports, and Stats"
 Then I should see a table row containing the following values in the reports table:
   | A | All data (all records and fields) |
