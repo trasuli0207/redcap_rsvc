@@ -4,6 +4,15 @@ As a REDCap end user
 I want to see that date/time widget is functioning as expected
 
 Scenario: B.3.14.400.100 Data entry for Date/time validated fields
+#ATS prerequisite: Normal users cannot move projects to production by default - let's adjust that before we proceed.
+Given I login to REDCap with the user "Test_Admin"
+When I click on the link labeled "Control Center"
+And I click on the link labeled "User Settings"
+Then I should see "System-level User Settings"
+Given I select "Yes, normal users can move projects to production" on the dropdown field labeled "Allow normal users to move projects to production?"
+When I click on the button labeled "Save Changes"
+And I see "Your system configuration values have now been changed!"
+Then I logout
 
 #SETUP
 Given I login to REDCap with the user "Test_User1"
@@ -14,26 +23,32 @@ When I click on the link labeled "Project Setup"
 And I click on the button labeled "Move project to production"
 And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
 And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-Then I should see "Project status: Production"
+Then I should see Project status: "Production"
 
-Given I click the link labeled "Add/Edit Records"
+Given I click on the link labeled "Add / Edit Records"
 And I click on the button labeled "Add new record for the arm selected above"
-And I click the bubble for the "Data Types" longitudinal instrument for event "Event 1"
-Then I should see "Adding new Record ID 7."
+And I click the bubble to add a record for the "Data Types" longitudinal instrument on event "Event 1"
+Then I should see "Adding new Record ID 7"
 
 #FUNCTIONAL REQUIREMENT
 ##ACTION: Date/time widget icon
-When I click on the date picker widget icon for the field labeled "datetime YMD HMSS"
-And I select the date "08/01/2023 00:00:00" in the pop up calendar
+Given I click on the date picker widget on the field labeled "datetime YMD HMSS"
+And I select "Aug" in the dropdown of the open date picker widget for "datetime YMD HMSS"
+And I select "2023" in the dropdown of the open date picker widget for "datetime YMD HMSS"
+And I click on the link labeled exactly "1" in the open date picker widget
+And I move the Hour slider for the open date picker widget to 0
+And I move the Minute slider for the open date picker widget to 0
+And I click on the button labeled "Done" in the open date picker widget
+
 ##VERIFY
 Then I should see the date "2023-08-01 00:00:00" in the field labeled "datetime YMD HMSS"
 
 ##ACTION: Now button
-When I click on the button labeled "Now" for the field labeled "time HH:MM:SS"
+When I click on the "Now" button for the field labeled "time HH:MM:SS"
 ##VERIFY
 Then I should see the exact time in the field labeled "time HH:MM:SS"
 
 ##ACTION: Today button
-When I click on the button labeled "Today" for the field labeled "date YMD"
+When I click on the "Today" button for the field labeled "date YMD"
 ##VERIFY
 Then I should see today's date in the field labeled "date YMD"
