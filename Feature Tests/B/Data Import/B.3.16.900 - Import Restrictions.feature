@@ -14,34 +14,32 @@ When I click on the link labeled "Project Setup"
 And I click on the button labeled "Move project to production"
 And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
 And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-Then I should see "Project Status: Production"
+Then I should see Project status: "Production"
 
 ##ACTION: Import data
 When I click on the link labeled "Data Import Tool"
-And I click on the button labeled "Choose File"
-And I select the file labeled "B.3.16.900.100_ImportChangedUnlocked"
-And I click on the button labeled "Upload File"
-Then I should see a table header and rows containing the following values in in the Data Display Table:
+And I upload a "csv" format file located at "import_files/B.3.16.900.100_ImportChangedUnlocked.csv", by clicking the button near "Upload your CSV file:" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+Then I should see a table header and rows containing the following values in a table:
 |record_id | name |
 |       1         | Name|
 
-When I click the button labeled "Import Data"
+When I click on the button labeled "Import Data"
 Then I should see "Import Successful!"
 
 #FUNCTIONAL_REQUIREMENT
 ##ACTION: lock record 1
 When I click on the link labeled "Record Status Dashboard"
-And I click the link labeled "1"
-And I select the dropdown option labeled "Lock entire record" for the dropdown field labeled "Choose action for record"
+And I click on the link labeled exactly "1"
+#And I select the dropdown option labeled "Lock entire record" for the dropdown field labeled "Choose action for record"
+When I click on the span element labeled "Choose action for record"
+And I click on the link labeled "Lock entire record"
 And I click on the button labeled "Lock entire record" on the dialog box
-Then I should see "Record "1" is now LOCKED"
+Then I should see 'Record "1" is now LOCKED'
 
 #VERIFY_DI
 When I click on the link labeled "Data Import Tool"
-And I click on the button labeled "Choose File"
-And I select the file labeled "B.3.16.900.100_ImportChangedLocked"
-And I click on the button labeled "Upload File"
-Then I should see a table header and rows containing the following values in in the Error Display Table:
+And I upload a "csv" format file located at "import_files/B.3.16.900.100_ImportChangedLocked.csv", by clicking the button near "Upload your CSV file:" to browse for the file, and clicking the button labeled "Upload File" to upload the file
+Then I should see a table header and rows containing the following values in a table:
 |Record | Error message |
 |  1         | This record has been locked at the record level. No value within this record can be modified.|
 
