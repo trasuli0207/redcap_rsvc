@@ -25,8 +25,6 @@ Feature: User Interface: The system shall record all versions of the data dictio
         And I click on the button labeled "Move project to production"
         And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
         And I click on the button labeled "YES, Move to Production Status" in the dialog box
-        #And I click on the button labeled "YES, Move to Production Status" in the dialog box to request a change in project status
-        #Then I should see Project Status: "Production"
         Then I should see Project status: "Production"
 
         ##ACTION: Draft Mode
@@ -37,13 +35,11 @@ Feature: User Interface: The system shall record all versions of the data dictio
         ##ACTION
         Given I click on the instrument labeled "Data Types"
          And I click on the button labeled "Add Field"
-        # And I click on the button labeled "Add Field" at the bottom of the instrument
+
 
         And I select "Notes Box (Paragraph Text)" on the dropdown field labeled "Field Type:"
-        # And I click on the dropdown field labeled "Select a Type of Field"
         And I enter "DD History" into the Field Label of the open "Add New Field" dialog box
         And I enter "dd_history" into the Variable Name of the open "Add New Field" dialog box
-        #And I add a new Notes Box (Paragraph Text) labeled "DD History" with the variable name "dd_history"
         And I click on the button labeled "Save"
         Then I should see the field labeled "DD History"
 
@@ -54,14 +50,12 @@ Feature: User Interface: The system shall record all versions of the data dictio
         And I click on the button labeled "Close" in the dialog box
 
         ##ACTION
-        # When I click on the tab labeled "Project Home"
         When I click on the tab labeled "Project Home"
         And I click on the link labeled "Project Revision History"
         Then I should see "Project Revision History"
 
         #FUNCTIONAL_REQUIREMENT
         And I should see a table rows containing the following values in a table:
-            #Then I should see a row containing the following values in the Project Review History table:
             | Created project         | mm/dd/yyyy hh:mm |                          | Test_User1 (Test User1) |
             | Moved to production      | mm/dd/yyyy hh:mm | Download data dictionary | Test_User1 (Test User1) |
             | Production revision #1 (current) | mm/dd/yyyy hh:mm | Download data dictionary | Test_User1 (Test User1) |
