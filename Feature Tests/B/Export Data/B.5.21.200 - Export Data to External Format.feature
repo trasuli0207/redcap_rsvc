@@ -15,33 +15,40 @@ When I click on the link labeled "Data Exports, Reports, and Stats"
 Then I should see a table row containing the following values in the reports table:
 | A | All data (all records and fields) |
 
-Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
+Given I click on the button labeled "Export Data"
+#Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
 And I click on the radio labeled "CSV / Microsoft Excel (raw data)" in the dialog box
 And I click on the button labeled "Export Data" in the dialog box
 Then I should see a dialog containing the following text: "Data export was successful!"
 
 Given I click on the download icons to receive the files for the "CSV / Microsoft Excel (raw data)" format in the dialog box
-Then I should have a csv file with the extension .csv within the downloads folder
+Then I should see a downloaded file named "B521200100_DATA_2024-03-01_1201.csv"
+#Then I should have a csv file with the extension .csv within the downloads folder
 #Manual Close file
 
 And I click on the button labeled "Close" in the dialog box
 
 #FUNCTIONAL_REQUIREMENT
 ##ACTION: export CSV (labels)
-Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
+Given I click on the button labeled "Export Data"
+#Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
 And I click on the radio labeled "CSV / Microsoft Excel (labels)" in the dialog box
 And I click on the button labeled "Export Data" in the dialog box
 Then I should see a dialog containing the following text: "Data export was successful!"
 
 Given I click on the download icons to receive the files for the "CSV / Microsoft Excel (labels)" format in the dialog box
-Then I should have a csv file with the extension .csv within the downloads folder
+#Then I should see a downloaded file named "B521200100-TestReport_DATA_LABELS_2024-03-01_1439.csv"
+Then I should see the latest downloaded "csv" file containing the headings below
+| "Record ID"|"Event Name"|"Repeat Instrument"|"Repeat Instance"|"Data Access Group"|"Survey Identifier"|Name|Email|Complete?|Name|"Text box"|Text2|radio|"Notes box"|"Multiple Choice Dropdown Manual"|"Multiple Choice dropdown Auto"|"Radio Button Auto"|"Radio Button Manual"|"Checkbox (choice=Checkbox1)"|"Checkbox (choice=Checkbox2)"|"Checkbox (choice=Checkbox3)"|"Calc Test"|"Calculated Field"|Signature|"File Upload"|Required|Identifier|Identifier|"Edit Field"|"date YMD"|"date MDY"|"date DMY"|"time HH:MM:SS"|"time HH:M"|"time MM:SS"|"datetime YMD HMSS"|"datetime YMD HM"|"datetime MDY HMSS"|"datetime DMY HMSS"|"Integer "|Numbers|"Numbers 1 decimal place - period as decimal "|"Numbers 1 decimal place - comma as decimal "|"Letters only"|"MRN (10 Digits)"|"MRN (generic)"|"Social Security Number (US)"|"Phone (North America)"|"Phone (Australia)"|"Phone (UK)"|"Zipcode (US)"|"Postal code 5 (France)"|"Postal Code (Australia)"|"Postal Code (Canada)"|Complete?|"Survey Timestamp"|Name|Email|Complete?|"Survey Timestamp"|Name|Email|DOB|"Signature "|Complete?|
+#Then I should have a csv file with the extension .csv within the downloads folder
 #Manual Close file
 
 And I click on the button labeled "Close" in the dialog box
 
 #FUNCTIONAL_REQUIREMENT
 ##ACTION: export SPSS
-Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
+Given I click on the button labeled "Export Data"
+#Given I click on the "Export Data" button for "All data (all records and fields)" report in the My Reports & Exports table
 And I click on the radio labeled "SPSS Statistical Software" in the dialog box
 And I click on the button labeled "Export Data" in the dialog box
 Then I should see a dialog containing the following text: "Data export was successful!"
