@@ -57,14 +57,9 @@ Feature: User Interface: The system shall support limiting a rule viewing that r
 
         #FUNCTIONAL_REQUIREMENT
         ##ACTION: verify ability to view discrepancies with access
-        #And I click on the "Execute" button for Data Quality Rule # "C" 
-        #And I click on the button labeled "Execute" for Data Quality Rule # "C"
-        #When I click on the button labeled "Execute" for the Rule Name labeled "Field validation errors (incorrect data type)" 
         When I click on the view link for Data Quality Rule # "C" 
-        #When I click on the link labeled "view" for the Rule Name labeled "Field validation errors (incorrect data type)"
         Then I should see "Rule: Field validation errors (incorrect data type)" in the dialog box
         And I should see "Discrepancies found: 1" in the dialog box
-        #And I click on the button labeled "close" in the dialog box 
         And I should see a table header and rows containing the following values in a table:
             | Record                     | Discrepant fields with their values | Status           | Exclude |
             | 6  Event 1 (Arm 1: Arm 1) | email = HelloWorld                  | Validation error | exclude |
@@ -97,7 +92,6 @@ Feature: User Interface: The system shall support limiting a rule viewing that r
             | 2      | [ptname]<>[name]                                                          | [ptname]<>[name]                         | ERROR               |
 
         When I click on the view link for Data Quality Rule # "C" 
-        #When I click on the link labeled "view" for the Rule Name labeled "Field validation errors (incorrect data type)"
         Then I should see "Rule: Field validation errors (incorrect data type)" in the dialog box
         And I should see "Discrepancies found: 1" in the dialog box
         And I should see a table header and rows containing the following values in a table:
@@ -108,8 +102,5 @@ Feature: User Interface: The system shall support limiting a rule viewing that r
 
         #VERIFY_RSD GO TO RSD AND CANNOT SEE ANY INSTRUMENTS
         When I click on the link labeled "Record Status Dashboard"
-        #Then I should NOT see the instrument labeled "Text Validation" for the event "Event 1" 
-        #Then I should NOT see the instrument labeled "Text Validation" for record ID "1" from arm name "Arm 1: Arm 1"
-        
         And I should NOT see "Text Validation" 
 
