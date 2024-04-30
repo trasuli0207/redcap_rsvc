@@ -25,12 +25,8 @@ Feature: User Interface: The system shall support limiting rule viewing to a Dat
         And I select "TestGroup1" on the dropdown field labeled "[No Assignment]" on the role selector dropdown
         And I click on the button labeled exactly "Assign" on the role selector dropdown
         Then I should see "Test User1" within the "1_FullRights" row of the column labeled "Username" of the User Rights table
-        #And I should see "Test User1" assigned to "TestGroup1"
-        Then I should see a table header and rows containing the following values in a table:
-            # | Role name      | Username                        | Data Aceess Group |
-            # | —             |  test_admin (Admin User)         | —                 |
-            # | 1_FullRights   | test_user1 (Test User1)         | TestGroup1        |
 
+        Then I should see a table header and rows containing the following values in a table:
             | Role         | Username or users assigned to a role | Expiration | Data Access Group |
             | —            | test_admin (Admin User)              | never      | —                 |
             | 1_FullRights | test_user1 (Test User1)              | never      | TestGroup1        |
@@ -43,7 +39,6 @@ Feature: User Interface: The system shall support limiting rule viewing to a Dat
         And I click on the button labeled exactly "Assign" on the role selector dropdown
         Then I should see "Test User2" within the "1_FullRights" row of the column labeled "Username" of the User Rights table
         Then I should see a table header and rows containing the following values in a table:
-            #And I should see "Test User2" assigned to "TestGroup2"
             | Role         | Username or users assigned to a role | Expiration | Data Access Group |
             | —            | test_admin (Admin User)              | never      | —                 |
             | 1_FullRights | test_user1 (Test User1)              | never      | TestGroup1        |
@@ -51,13 +46,9 @@ Feature: User Interface: The system shall support limiting rule viewing to a Dat
 
         #SETUP: Create Data Quality Rule
         When I click on the link labeled "Data Quality"
-        #And I enter "TestGroup1" for the field labeled "Rule Name"
         And I enter "TestGroup1" into the textarea field labeled "Enter descriptive name for new rule"
         And I enter '([ptname]<>[name]) AND ([user-dag-name]="testgroup1")' into the textarea field labeled "Enter logic for new rule"
-        #And I enter "([ptname]<>[name]) AND ([user-dag-name]="testgroup1")" into the textarea field labeled "Enter logic for new rule"
         And I clear field and enter '([ptname]<>[name]) AND ([user-dag-name]="testgroup1")' into the textarea field labeled "Logic Editor" in the dialog box
-       #And I clear field and enter "([ptname]<>[name]) AND ([user-dag-name]="testgroup1")" in the textarea field labeled "Logic Editor" in the dialog box
-        #And I enter "([ptname]<>[name]) AND ([user-dag-name]="testgroup1")" for the field labeled "Logic Editor"
         And I click on the button labeled "Update & Close Editor" in the dialog box
         And I click on the button labeled "Add"
         Then I should see a table header and rows containing the following values in a table:
