@@ -14,7 +14,6 @@ Feature: User Interface: The tool shall only display forms that are designated t
         And I click on the button labeled "Move project to production"
         And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
         And I click on the button labeled "YES, Move to Production Status" in the dialog box
-        #Then I should see "Project status: Production"
         Then I should see Project status: "Production"
 
         #SETUP
@@ -23,42 +22,41 @@ Feature: User Interface: The tool shall only display forms that are designated t
         And I click on the button labeled "I understand. Let me make changes" in the dialog box
         And I should see "Lock Record Custom Text"
         Then I should see a table header and rows containing the following values in a table:
-            | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? |                           |
-            #| Display the Lock option for this instrument?| Data Collection Instrument | Also display E-signature option on instrument?|
-            | [✓]                                          | Text Validation            | [ ]                                            | Notes Box & "Save" button |
-            | [✓]                                          | Data Type                  | [ ]                                            | Notes Box & "Save" button |
-            | [✓]                                          | Survey                     | [ ]                                            | Notes Box & "Save" button |
-            | [✓]                                          | Consent                    | [ ]                                            | Notes Box & "Save" button |
+            | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? |                           
+            | [✓]                                          | Text Validation            | [ ]                                            |
+            | [✓]                                          | Data Types                 | [ ]                                            |
+            | [✓]                                          | Survey                     | [ ]                                            |
+            | [✓]                                          | Consent                    | [ ]                                            |
 
 
         #FUNCTIONAL REQUIREMENT
         ##ACTION Lock Record Custom Text
-        When I enter "Test custom text" into the Notes Box field for the Data Collection Instrument named "Text Validation"
-        And I click on the button labeled "Save" for the Data Collection Instrument labeled "Text Validation"
-        And I enter "Test custom text" into the Notes Box field for the Data Collection Instrument labeled "Data Types"
-        And I click on the button labeled "Save" for the Data Collection Instrument labeled "Data Types"
-        Then I should see a table header and rows containing the following values in the table:
-            | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? | Lock Record Custom Text   |
-            | [✓]                                          | Text Validation            | checkbox                                       | Test custom text          |
-            | [✓]                                          | Data Type                  | checkbox                                       | Test custom text          |
-            | [✓]                                          | Survey                     | checkbox                                       | Notes Box & "Save" button |
-            | checkbox                                     | Consent                    | checkbox                                       | Notes Box & "Save" button |
+        When I enter "Test custom text" into the textarea field labeled "Text Validation"
+         And I click on the first button labeled "Save" 
+        And I enter "Test custom text" into the textarea field labeled "Data Types"
+        And I click on the first button labeled "Save" 
+        Then I should see a table header and rows containing the following values in a table:
+            | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? | Lock Record Custom Text |
+            | [✓]                                          | Text Validation            | [ ]                                      | Test custom text             |
+            | [✓]                                          | Data Types                  | [ ]                                      | Test custom text             |
+            | [✓]                                          | Survey                     | [ ]                                      |                              |
+            | [✓]                                          | Consent                    | [ ]                                      |                              |
 
 
         ##VERIFY_LOG
         When I click on the link labeled "Logging"
-        Then I should see a table header and rows including the following values in the logging table:
+        Then I should see a table header and rows containing the following values in a table:
             | Username   | Action        | List of Data Changes OR Fields Exported |
             | test_admin | Manage/Design | Customize record locking                |
             | test_admin | Manage/Design | Customize record locking                |
 
         ##VERIFY: custom text in record
         When I click on the link labeled "Record Status Dashboard"
-        And I click the bubble for the instrument labeled "Text Validation" for record "1" for event "Event 1"
+        And I locate the bubble for the "Text Validation" instrument on event "Event 1" for record ID "1" and click on the bubble
         Then I should see "Text Validation"
         And I should see "Test custom text"
 
-        When I click on the link labeled "Data Tapes"
+        When I click on the link labeled "Data Types"
         Then I should see "Data Types"
         And I should see "Test custom text"
 
@@ -66,22 +64,21 @@ Feature: User Interface: The tool shall only display forms that are designated t
         ##ACTION Edit / Remove Custom Text
         When I click on the link labeled "Customize & Manage Locking/E-signatures"
         And I click on the button labeled "I understand. Let me make changes" in the dialog box
-        And I click on the edit image for the Data Collection Instrument labeled "Text Validation"
-        And I enter "New custom text" into the Notes Box field for the Data Collection Instrument labeled "Text Validation"
-        And I click on the button labeled "Save" for the Data Collection Instrument labeled "Text Validation"
-        And I click on the remove image for the Data Collection Instrument labeled "Data Types"
-        And I click on the button labeled "OK" in the pop-up box
+        And I click on the Edit icon within the Record Locking Customization table for the Data Collection Instrument named "Text Validation"
+        And I enter "New custom text" into the textarea field labeled "Text Validation"
+        And I click on the first button labeled "Save"
+        And I click on the Delete icon within the Record Locking Customization table for the Data Collection Instrument named "Data Types" 
          Then I should see a table header and rows containing the following values in a table:
-        #     | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? | Lock Record Custom Text   |
-        #     | [✓]                                          | Text Validation            | [✓]                                            | New custom text           |
-        #     | [✓]                                          | Data Type                  | [✓]                                            | Notes Box & "Save" button |
-        #     | [✓]                                          | Survey                     | [✓]                                            | Notes Box & "Save" button |
-        #     | [✓]                                          | Consent                    | [✓]                                            | Notes Box & "Save" button |
+            | Display the Lock option for this instrument? | Data Collection Instrument | Also display E-signature option on instrument? | Lock Record Custom Text      |
+            | [✓]                                          | Text Validation            | [ ]                                            | New custom text             |
+            | [✓]                                          | Data Type                  | [ ]                                            |                             |
+            | [✓]                                          | Survey                     | [ ]                                            |                             |
+            | [✓]                                          | Consent                    | [ ]                                            |                             |
 
 
         ##VERIFY_LOG
         When I click on the link labeled "Logging"
-        Then I should see a table header and rows including the following values in the logging table:
+        Then I should see a table header and rows containing the following values in a table:
             | Username   | Action        | List of Data ChangesOR Fields Exported |
             | test_admin | Manage/Design | Customize record locking               |
             | test_admin | Manage/Design | Customize record locking               |
@@ -91,10 +88,10 @@ Feature: User Interface: The tool shall only display forms that are designated t
 
         ##VERIFY: custom text in record and revert back to template
         When I click on the link labeled "Record Status Dashboard"
-        And I click the bubble for the instrument labeled "Text Validation" for record "1" for event "Event 1"
+        And I locate the bubble for the "Text Validation" instrument on event "Event 1" for record ID "1" and click on the bubble
         Then I should see "Text Validation"
         And I should see "New custom text"
 
-        When I click on the link labeled "Data Tapes"
+        When I click on the link labeled "Data Types"
         Then I should see "Data Types"
         And I should see "Lock this instrument?"
