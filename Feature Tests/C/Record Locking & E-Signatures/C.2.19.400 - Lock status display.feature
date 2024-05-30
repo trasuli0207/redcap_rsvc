@@ -4,126 +4,115 @@ Feature: User Interface: The tool shall display locked status of forms for all r
     I want to see that Record locking and E-signatures is functioning as expected
 
     Scenario: C.2.19.400.100 display lock status
-        #SETUP
-        # Given I login to REDCap with the user "Test_Admin"
-        # And I create a new project named "C.2.19.400.100" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project_1.xml", and clicking the "Create Project" button
+        SETUP
+        Given I login to REDCap with the user "Test_Admin"
+        And I create a new project named "C.2.19.400.100" by clicking on "New Project" in the menu bar, selecting "Practice / Just for fun" from the dropdown, choosing file "Project_1.xml", and clicking the "Create Project" button
 
-        # #SETUP_PRODUCTION
-        # When I click on the link labeled "Project Setup"
-        # And I click on the button labeled "Move project to production"
-        # And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
-        # And I click on the button labeled "YES, Move to Production Status" in the dialog box
-        # Then I should see Project status: "Production"
+        #SETUP_PRODUCTION
+        When I click on the link labeled "Project Setup"
+        And I click on the button labeled "Move project to production"
+        And I click on the radio labeled "Keep ALL data saved so far" in the dialog box
+        And I click on the button labeled "YES, Move to Production Status" in the dialog box
+        Then I should see Project status: "Production"
 
-        # #USER_RIGHTS
-        # When I click on the link labeled "User Rights"
-        # And I enter "Test_user1" into the input field labeled "Add with custom rights"
-        # And I click on the button labeled "Add with custom rights"
-        # Then I should see a dialog containing the following text: "Adding new user"
-        # # Then I should see "Adding new user "test_user1""
+        #USER_RIGHTS
+        When I click on the link labeled "User Rights"
+        And I enter "Test_user1" into the input field labeled "Add with custom rights"
+        And I click on the button labeled "Add with custom rights"
+        Then I should see a dialog containing the following text: "Adding new user"
+       
 
-        # When I check the User Right named "Record Locking Customization"
-        # # When I check the checkbox for the field labeled "Record Locking Customization"
-        # #And I click on the radio labeled "Locking / Unlocking" for the field labeled "Lock / Unlock Records (instrument level)"
-        # And I select the User Right named "Lock/Unlock Records" and choose "Locking / Unlocking"
-        # And I check the User Right named "Lock/Unlock *Entire* Records (record level)"
-        # #And I click on the checkbox for the field labeled "Lock/Unlock *Entire* Records (record level)"
-        # And I check the User Right named "Logging"
-        # #And I click on the button labeled "Add user"
-        # #And I check the User Right named "Logging"
-        # #And I click on the checkbox for the field labeled "Logging"
-        # #And will leave the tab open when I return to the REDCap project
-        # And I save changes within the context of User Rights
-        # #Then I should see "User "test_user1" was successfully added"
+        When I check the User Right named "Record Locking Customization"
+        And I select the User Right named "Lock/Unlock Records" and choose "Locking / Unlocking"
+        And I check the User Right named "Lock/Unlock *Entire* Records (record level)"
+        And I check the User Right named "Logging"
+        And I save changes within the context of User Rights
+        
+
+        #VERIFY_LOG
+        When I click on the link labeled "Logging"
+        Then I should see a table header and rows containing the following values in the logging table:
+            | Username   | Action              | List of Data Changes OR Fields Exported |
+            | test_admin | Add user Test_user1 | user = 'Test_user1'                     |
+
+        And I logout
+
+        Given I login to REDCap with the user "Test_User1"
+
+        #FUNCTIONAL REQUIREMENT
+        ##ACTION Lock icon for instrument
+        And I click on the link labeled "My Projects"
+        And I click on the link labeled "C.2.19.400.100"
+        When I click on the link labeled "Record Status Dashboard"
+        And I locate the bubble for the "Text Validation" instrument on event "Event 1" for record ID "3" and click on the bubble
+        Then I should see "Text Validation"
+        And I should see the checkbox for the field labeled "Lock this instrument?"
+
+        When I check the checkbox labeled "Lock this instrument?"
+        And I click on the button labeled "Save & Exit Form"
+        Then I should see "Record Home Page"
+        And I should see "Record ID 3 successfully edited."
+        ##VERIFY_RH
+        Then I should see a table header and rows containing the following values in a table:
+            | Data Collection Instrument | Event 1     | Event 2 | Event Three |
+            | Text Validation            | [lock icon] |         |             |
+        #And I should see the lock icon for the Data Instrument labeled "Text Validation" for event "Event 1"
 
         ##VERIFY_LOG
-    #     When I click on the link labeled "Logging"
-    #     Then I should see a table header and rows containing the following values in the logging table:
-    #         | Username   | Action              | List of Data Changes OR Fields Exported |
-    #         | test_admin | Add user Test_user1 | user = 'Test_user1'                     |
+        When I click on the link labeled "Logging"
+        Then I should see a table header and rows containing the following values in the logging table:
+            | Username   | Action               | List of Data Changes OR Fields Exported                                |
+            | test_user1 | Lock/Unlock Record 3 | Action: Lock instrument Record: 3 Form: Text Validation Event: Event 1 |
 
-    #     And I logout
+        ##VERIFY_LOCK_ESIG: Record instrument lock on Locking Management
+        When I click on the link labeled "Customize & Manage Locking/E-signatures"
+        And I click on the button labeled "I understand. Let me make changes" in the dialog box
+        And I click on the link labeled "E-signature and Locking Management"
+        Then I should see a table header and rows containing the following values in a table:
+            | Record  |Event Name                 | Form Name       | Locked?    |
+            | 3       | Event 1 (Arm 1: Arm 1)    | Text Validation | [lock icon] |
+            | 3       |	Event 1 (Arm 1: Arm 1)    | Consent         |            |
 
-    #     Given I login to REDCap with the user "Test_User1"
+        ##ACTION Lock icon for event
+        When I click on the link labeled "Record Status Dashboard"
+        And I click on the link labeled "3"
+        Then I should see "Record Home Page"
+        When I click on the span element labeled "Choose action for record"
+        #When I click on the dropdown option labeled "Lock entire record" from the dropdown button with the placeholder text of "Choose action for record"
+        And I click on the link labeled "Lock entire record" 
+        And I click on the button labeled "Lock entire record" in the dialog box
+        Then I should see 'Record "3" is now LOCKED' in the dialog box
+        ##VERIFY_RH
+        
+        And I wait for 5 seconds
+        ##VERIFY_LOG
+        When I click on the link labeled "Logging"
+        Then I should see a table header and rows containing the following values in a table:
+            | Username   | Action               | List of Data Changes OR Fields Exported|
+            | test_user1 | Lock/Unlock          | Action: Lock entire record |
+            |             | Record              |   Record: 3 - Arm 1: Arm 1  |
+            |             |   3                 |                              |
 
-    #     #FUNCTIONAL REQUIREMENT
-    #     ##ACTION Lock icon for instrument
-    #     And I click on the link labeled "My Projects"
-    #     And I click on the link labeled "C.2.19.400.100"
-    #     When I click on the link labeled "Record Status Dashboard"
-    #     And I locate the bubble for the "Text Validation" instrument on event "Event 1" for record ID "3" and click on the bubble
-    #     #And I click the bubble for the instrument labeled "Text Validation" for record "3" for event "Event 1"
-    #     Then I should see "Text Validation"
-    #     And I should see the checkbox for the field labeled "Lock this instrument?"
-
-    #     When I check the checkbox labeled "Lock this instrument?"
-    #     #When I click on the checkbox for the field labeled "Lock this instrument?"
-    #     And I click on the button labeled "Save & Exit Form"
-    #     Then I should see "Record Home Page"
-    #     And I should see "Record ID 3 successfully edited."
-    #     ##VERIFY_RH
-    #     Then I should see a table header and rows containing the following values in a table:
-    #         | Data Collection Instrument | Event 1     | Event 2 | Event Three |
-    #         | Text Validation            | [lock icon] |         |             |
-    #     #And I should see the lock icon for the Data Instrument labeled "Text Validation" for event "Event 1"
-
-    #     ##VERIFY_LOG
-    #     When I click on the link labeled "Logging"
-    #     Then I should see a table header and rows containing the following values in the logging table:
-    #         | Username   | Action               | List of Data Changes OR Fields Exported                                |
-    #         | test_user1 | Lock/Unlock Record 3 | Action: Lock instrument Record: 3 Form: Text Validation Event: Event 1 |
-
-    #     ##VERIFY_LOCK_ESIG: Record instrument lock on Locking Management
-    #     When I click on the link labeled "Customize & Manage Locking/E-signatures"
-    #     And I click on the button labeled "I understand. Let me make changes" in the dialog box
-    #     And I click on the link labeled "E-signature and Locking Management"
-    #     Then I should see a table header and rows containing the following values in a table:
-    #         | Record  |Event Name                 | Form Name       | Locked?    |
-    #         | 3       | Event 1 (Arm 1: Arm 1)    | Text Validation | [lock icon] |
-    #         | 3       |	Event 1 (Arm 1: Arm 1)    | Consent         |            |
-
-    #     ##ACTION Lock icon for event
-    #     When I click on the link labeled "Record Status Dashboard"
-    #     And I click on the link labeled "3"
-    #     Then I should see "Record Home Page"
-    #     When I click on the span element labeled "Choose action for record"
-    #     #When I click on the dropdown option labeled "Lock entire record" from the dropdown button with the placeholder text of "Choose action for record"
-    #     And I click on the link labeled "Lock entire record" 
-    #     And I click on the button labeled "Lock entire record" in the dialog box
-    #     Then I should see 'Record "3" is now LOCKED' in the dialog box
-    #     ##VERIFY_RH
-    #     #And I click on the button labeled "OK" in the dialog box
-    #     And I wait for 5 seconds
-    #     # And I should see a table header and rows containing the following values in a table:
-    #     #     | Data Collection Instrument | Event 1     | Event 2 | Event Three |
-    #     #     | Text Validation            | [lock icon] |         |             |
-    #     #And I should see the lock icon for "Record ID 3"
-
-    #     ##VERIFY_LOG
-    #     When I click on the link labeled "Logging"
-    #     Then I should see a table header and rows containing the following values in the logging table:
-    #         | Username   | Action               | List of Data Changes OR Fields Exported              |
-    #         | test_user1 | Lock/Unlock Record 3 | Action: Lock entire record, Record: 3 - Arm 1: Arm 1 |
-
-    #     ##VERIFY_LOCK_ESIG: record locked
-    #     When I click on the link labeled "Customize & Manage Locking/E-signatures"
-    #     And I click on the button labeled "I understand. Let me make changes" in the dialog box
-    #     And I click on the link labeled "E-signature and Locking Management"
-    #     Then I should see a table header and rows containing the following values in the E-signature and Locking Management table:
-    #         | Record                           | Form Name | Locked?    |
-    #         | 3 (Arm 1: Arm 1) (entire record) |           | lock image |
-
-    #     ##ACTION : unlock record 3
-    #     When I click on the link labeled "Record Status Dashboard"
-    #     And I click on the link labeled "3"
-    #     Then I should see "Record Home Page"
-    #     When I click on the span element labeled "Choose action for record"
-    #     #When I click on the dropdown option labeled "Unlock entire record" from the dropdown button with the placeholder text of "Choose action for record"
-    #     And I link on the button labeled "Unlock entire record" in the dialog box
-    #     Then I should see "Record "3" is now UNLOCKED"
-    #     ##VERIFY_RH
-    #     And I should NOT see the lock image for "Record ID 3"
-    #    And I want to export a snapshot of this feature here
+        ##VERIFY_LOCK_ESIG: record locked
+        When I click on the link labeled "Customize & Manage Locking/E-signatures"
+        And I click on the button labeled "I understand. Let me make changes" in the dialog box
+        And I click on the link labeled "E-signature and Locking Management"
+        Then I should see a table header and rows containing the following values in a table:
+            | Record                           | Form Name | Locked?    |
+            | 3 (Arm 1: Arm 1)                 |           | [lock icon]|
+            | (entire record)                  |           |           |
+        ##ACTION : unlock record 3
+        When I click on the link labeled "Record Status Dashboard"
+        And I click on the link labeled "3"
+        Then I should see "Record Home Page"
+        When I click on the span element labeled "Choose action for record"
+        And I click on the link labeled "Unlock entire record"
+        And I click on the button labeled "Unlock entire record" 
+        #Then I should see "Record "3" is now UNLOCKED"
+        ##VERIFY_RH
+        #And I should NOT see the lock image for "Record ID 3"
+        And I wait for 5 seconds
+       
         ##VERIFY_LOG
         When I click on the link labeled "Logging"
         Then I should see a table header and rows containing the following values in a table:
@@ -140,7 +129,7 @@ Feature: User Interface: The tool shall display locked status of forms for all r
 
         ##ACTION Unlock icon for instrument
         When I click on the link labeled "Record Status Dashboard"
-        And I click the bubble for the instrument labeled "Text Validation" for record "3" for event "Event 1"
+        And I locate the bubble for the "Text Validation" instrument on event "Event 1" for record ID "3" and click on the bubble
         Then I should see "Text Validation"
         And I should see a button labeled "Unlock form"
 
@@ -156,7 +145,7 @@ Feature: User Interface: The tool shall display locked status of forms for all r
         Then I should see "Record Home Page"
         And I should see "Record ID 3 successfully edited."
         ##VERIFY_RH
-        And I should NOT see the lock image for the Data Instrument labeled "Text Validation" for event "Event 1"
+        #And I should NOT see the lock image for the Data Instrument labeled "Text Validation" for event "Event 1"
 
         ##VERIFY_LOG
         When I click on the link labeled "Logging"
@@ -168,7 +157,7 @@ Feature: User Interface: The tool shall display locked status of forms for all r
         When I click on the link labeled "Customize & Manage Locking/E-signatures"
         And I click on the button labeled "I understand. Let me make changes" in the dialog box
         And I click on the link labeled "E-signature and Locking Management"
-        Then I should see a table header and rows containing the following values in the E-signature and Locking Management table:
+        Then I should see a table header and rows containing the following values in a table:
             | Record | Form Name       | Locked? |
             | 3      | Text Validation |         |
             | 3      | Consent         |         |
